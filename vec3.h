@@ -94,6 +94,23 @@ vec3 random_in_hemisphere(const vec3& normal) {
 		return -in_unit_sphere;
 }
 
+vec3 random_in_unit_disk() {
+	while (true) {
+		auto p = vec3(random_double(-1, 1), random_double(-1, 1), 0);
+		if (p.squared_length() >= 1) continue;
+		return p;
+	}
+}
+
+
+
+
+
+
+
+
+
+
 
 inline std::istream& operator>>(std::istream& is, vec3& t) {
 	is >> t.e[0] >> t.e[1] >> t.e[2];
@@ -103,7 +120,6 @@ inline std::ostream& operator<<(std::ostream& os, vec3& t) {
 	os << t.e[0] << " " << t.e[1] << " " << t.e[2];
 	return os;
 }
-
 inline vec3 operator+(const vec3& v1, const vec3& v2) {
 
 	return vec3(v1.e[0] + v2.e[0], v1.e[1] + v2.e[1], v1.e[2] + v2.e[2]);
@@ -186,9 +202,30 @@ inline vec3 unit_vector(vec3 v) {
 	return v / v.length();
 }
 
-vec3 reflect(const vec3& v, const vec3& n) {
+inline vec3 reflect(const vec3& v, const vec3& n) {
 	return v - 2 *vec3::dot(v, n) * n;
 }
+inline vec3 refract(const vec3& uv, const vec3& n, double etai_over_etat) {
+	auto cos_theta = vec3::dot(-uv, n);
+	vec3 r_out_parallel = etai_over_etat * (uv + cos_theta * n);
+	vec3 r_out_perp = -sqrt(1.0 - r_out_parallel.squared_length()) * n;
+	return r_out_parallel + r_out_perp;
+}
+inline vec3 cross(const vec3& v, const vec3& n) {
+
+	vec3 result;
+	result[0] = v[1] * n[2] - v[2] * n[1];
+	result[1] = -(v[0] * n[2] - v[2] * n[0]);
+	result[2] = v[0] * n[1] - v[1] * n[0];
+
+	return result;
+
+}
+
+
+
+
+
 
 using point3 = vec3;   // 3D point
 using color = vec3;    // RGB color
