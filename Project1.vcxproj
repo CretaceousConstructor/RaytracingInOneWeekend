@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -53,6 +53,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.0.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
@@ -87,10 +88,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\include;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;cudart_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -99,10 +104,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\include;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;cudart_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -113,12 +122,16 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\include;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;cudart_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -129,29 +142,99 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\include;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;cudart_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ambient.cpp" />
+    <ClCompile Include="ambientOccluder.cpp" />
+    <ClCompile Include="areaLight.cpp" />
+    <ClCompile Include="areaLighting.cpp" />
+    <ClCompile Include="bbox.cpp" />
+    <ClCompile Include="box.cpp" />
+    <ClCompile Include="camera.cpp" />
+    <ClCompile Include="emissive.cpp" />
+    <ClCompile Include="emissive.h" />
+    <ClCompile Include="environmentLight.cpp" />
+    <ClCompile Include="glossySpecular.cpp" />
+    <ClCompile Include="hittable.cpp" />
+    <ClCompile Include="light.cpp" />
+    <ClCompile Include="material.cpp" />
+    <ClCompile Include="phong.cpp" />
+    <ClCompile Include="rectangle.cpp" />
+    <ClCompile Include="shadeRec.cpp" />
+    <ClCompile Include="world.cpp" />
+    <ClCompile Include="lambertian.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="matte.cpp" />
+    <ClCompile Include="pinHole.cpp" />
+    <ClCompile Include="plane.cpp" />
+    <ClCompile Include="pointLight.cpp" />
+    <ClCompile Include="rayCast.cpp" />
+    <ClCompile Include="renderer.cpp" />
+    <ClCompile Include="sampler.cpp" />
+    <ClCompile Include="sphere.cpp" />
+    <ClCompile Include="thinLens.cpp" />
+    <ClCompile Include="TrekMath.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ambient.h" />
+    <ClInclude Include="ambientOccluder.h" />
+    <ClInclude Include="areaLighting.h" />
+    <ClInclude Include="bbox.h" />
+    <ClInclude Include="box.h" />
+    <ClInclude Include="BRDF.h" />
     <ClInclude Include="camera.h" />
-    <ClInclude Include="color.h" />
+    <ClInclude Include="colors.h" />
+    <ClInclude Include="cuda_kernel.cuh" />
+    <ClInclude Include="environmentLight.h" />
+    <ClInclude Include="glossySpecular.h" />
+    <ClInclude Include="hammersley.h" />
+    <ClInclude Include="areaLight.h" />
     <ClInclude Include="hittable.h" />
-    <ClInclude Include="hittable_list.h" />
+    <ClInclude Include="phong.h" />
+    <ClInclude Include="plastic.h" />
+    <ClInclude Include="rectangle.h" />
+    <ClInclude Include="world.h" />
+    <ClInclude Include="jittered.h" />
+    <ClInclude Include="lambertian.h" />
+    <ClInclude Include="light.h" />
+    <ClInclude Include="shit.h" />
     <ClInclude Include="material.h" />
-    <ClInclude Include="Ray.h" />
-    <ClInclude Include="rtweekend.h" />
+    <ClInclude Include="matte.h" />
+    <ClInclude Include="multiJittering.h" />
+    <ClInclude Include="nrooks.h" />
+    <ClInclude Include="pinHole.h" />
+    <ClInclude Include="plane.h" />
+    <ClInclude Include="pointLight.h" />
+    <ClInclude Include="ray.h" />
+    <ClInclude Include="rayCast.h" />
+    <ClInclude Include="renderer.h" />
+    <ClInclude Include="renderState.h" />
+    <ClInclude Include="sampler.h" />
+    <ClInclude Include="shadeRec.h" />
     <ClInclude Include="sphere.h" />
-    <ClInclude Include="vec3.h" />
+    <ClInclude Include="thinLens.h" />
+    <ClInclude Include="tracer.h" />
+    <ClInclude Include="TrekMath.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="cuda_kernel.cu" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.0.targets" />
   </ImportGroup>
 </Project>

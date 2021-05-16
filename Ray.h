@@ -1,26 +1,43 @@
 #pragma once
-#include "vec3.h"
+#include "TrekMath.h"
 class ray {
 
 public:
-	ray() = default;
-	ray(const vec3& a, const vec3& b) {
-		A = a;
-		B = b;
+	ray() = default;	
+	ray(const TrekMath::point3& a, const TrekMath::vec3& b)
+		:A(a),B(glm::normalize(b))
+	{
+		
 	}
 
-	vec3 origin()const {
+	void setOrigin(const TrekMath::point3& p) {
+		A = p;
+	}
+	void setDir(const TrekMath::vec3& dir) {
+		B = glm::normalize(dir);
+	}
+
+	inline TrekMath::point3 eye() const {
 		return A;
 	}
-	vec3 direction()const {
+	inline TrekMath::point3 origin() const {
+		return A;
+	}
+	
+	inline  TrekMath::vec3 direction()  const {
 		return B;
 	}
-	vec3 point_at_parameter(double t )const {
+
+
+
+
+	TrekMath::vec3 point_at_parameter(double t )const {
 		return A + t*B;
 	}
 
+	
 
-
-	vec3 A;
-	vec3 B;
+private:
+	TrekMath::point3 A;
+	TrekMath::vec3 B;
 };

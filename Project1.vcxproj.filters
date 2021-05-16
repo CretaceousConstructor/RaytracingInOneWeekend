@@ -13,39 +13,248 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{953193ab-3deb-4f1c-85ad-f335988d6e90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Material">
+      <UniqueIdentifier>{46365bf3-b31b-4125-b871-d46ab4e45c23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cuda">
+      <UniqueIdentifier>{46d1d75f-784c-4d98-87d4-903682d55f39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sampler">
+      <UniqueIdentifier>{0e661922-253a-4eb1-a090-2c7c1aef8530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{63bf0213-9ce3-4d83-a205-fe82317898ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BRDF">
+      <UniqueIdentifier>{8574d616-1f2a-44e9-bff5-9b3b06503701}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Light">
+      <UniqueIdentifier>{3394f694-721d-48b8-90f2-e45fcd4d52ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tracer">
+      <UniqueIdentifier>{785db5be-38fb-4773-af42-fe2d18d10936}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TrekMath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="plane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sphere.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sampler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="thinLens.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pinHole.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ambient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pointLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rayCast.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lambertian.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="matte.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="glossySpecular.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="phong.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ambientOccluder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="areaLighting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="emissive.h">
+      <Filter>Material</Filter>
+    </ClCompile>
+    <ClCompile Include="emissive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rectangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="areaLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hittable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="environmentLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shadeRec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bbox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="box.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="vec3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Ray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="hittable.h">
+    <ClInclude Include="TrekMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sphere.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="hittable.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="cuda_kernel.cuh">
+      <Filter>Cuda</Filter>
+    </ClInclude>
+    <ClInclude Include="plane.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="sampler.h">
+      <Filter>Sampler</Filter>
+    </ClInclude>
+    <ClInclude Include="jittered.h">
+      <Filter>Sampler</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="hittable_list.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="nrooks.h">
+      <Filter>Sampler</Filter>
     </ClInclude>
-    <ClInclude Include="rtweekend.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="multiJittering.h">
+      <Filter>Sampler</Filter>
+    </ClInclude>
+    <ClInclude Include="hammersley.h">
+      <Filter>Sampler</Filter>
     </ClInclude>
     <ClInclude Include="camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="thinLens.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="pinHole.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="renderState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="color.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="BRDF.h">
+      <Filter>BRDF</Filter>
+    </ClInclude>
+    <ClInclude Include="shadeRec.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="ambient.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="light.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="pointLight.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="rayCast.h">
+      <Filter>Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="tracer.h">
+      <Filter>Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="matte.h">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="lambertian.h">
+      <Filter>BRDF</Filter>
+    </ClInclude>
+    <ClInclude Include="world.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="shit.h">
+      <Filter>Material</Filter>
     </ClInclude>
     <ClInclude Include="material.h">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="ray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="glossySpecular.h">
+      <Filter>BRDF</Filter>
+    </ClInclude>
+    <ClInclude Include="phong.h">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="plastic.h">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="colors.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ambientOccluder.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="areaLighting.h">
+      <Filter>Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="rectangle.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="areaLight.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="environmentLight.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="box.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="bbox.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="cuda_kernel.cu">
+      <Filter>Cuda</Filter>
+    </CudaCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
