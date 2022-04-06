@@ -59,14 +59,10 @@ bool bbox::hit(const ray& r, double t_min, double t_max, shadeRec& sr) const
 	}
 
 
-
-
-
-
 	double t0,t1;
 
-	t0 = std::min({ tx_min, ty_min, tz_min });
-	t1 = std::max({ tx_max, ty_max, tz_max });
+	t0 = std::max({ tx_min, ty_min, tz_min });
+	t1 = std::min({ tx_max, ty_max, tz_max });
 
 	return (t0 < t1 && t1 > kEpsilon); //needs to take t_min and t_max into account;
 

@@ -37,6 +37,12 @@
     <Filter Include="Tracer">
       <UniqueIdentifier>{785db5be-38fb-4773-af42-fe2d18d10936}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BTDF">
+      <UniqueIdentifier>{2650b679-a96b-4dc4-9415-8f0990169562}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Material\RTIW">
+      <UniqueIdentifier>{fa3a9ec5-5390-4baa-bef3-991994682b58}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -129,6 +135,87 @@
     <ClCompile Include="box.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="triangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="disk.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="torus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="whitted.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="perfectSpecular.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="reflective.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BRDF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="multiJittering.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hammersley.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="jittered.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nrooks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="glossyReflector.h">
+      <Filter>Material</Filter>
+    </ClCompile>
+    <ClCompile Include="glossyReflector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pathTrace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="globalTrace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BTDF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="perfectTransmitter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="transparent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="colors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tracer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="diffuse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="metal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dielectric.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="movingSphere.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AABB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bvh_node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TrekMath.h">
@@ -206,9 +293,6 @@
     <ClInclude Include="world.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="shit.h">
-      <Filter>Material</Filter>
-    </ClInclude>
     <ClInclude Include="material.h">
       <Filter>Material</Filter>
     </ClInclude>
@@ -219,9 +303,6 @@
       <Filter>BRDF</Filter>
     </ClInclude>
     <ClInclude Include="phong.h">
-      <Filter>Material</Filter>
-    </ClInclude>
-    <ClInclude Include="plastic.h">
       <Filter>Material</Filter>
     </ClInclude>
     <ClInclude Include="colors.h">
@@ -246,6 +327,57 @@
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="bbox.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="triangle.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="disk.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="torus.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="perfectSpecular.h">
+      <Filter>BRDF</Filter>
+    </ClInclude>
+    <ClInclude Include="whitted.h">
+      <Filter>Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="reflective.h">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="pathTrace.h">
+      <Filter>Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="globalTrace.h">
+      <Filter>Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="BTDF.h">
+      <Filter>BTDF</Filter>
+    </ClInclude>
+    <ClInclude Include="perfectTransmitter.h">
+      <Filter>BTDF</Filter>
+    </ClInclude>
+    <ClInclude Include="transparent.h">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="diffuse.h">
+      <Filter>Material\RTIW</Filter>
+    </ClInclude>
+    <ClInclude Include="metal.h">
+      <Filter>Material\RTIW</Filter>
+    </ClInclude>
+    <ClInclude Include="dielectric.h">
+      <Filter>Material\RTIW</Filter>
+    </ClInclude>
+    <ClInclude Include="movingSphere.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="AABB.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="bvh_node.h">
       <Filter>Models</Filter>
     </ClInclude>
   </ItemGroup>

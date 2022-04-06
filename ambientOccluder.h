@@ -16,9 +16,9 @@ public:
 	ambientOccluder() 
 		:
 		min_amount(0.),
-		sampler_ptr(std::make_unique<multiJittering>(renderState::view_plane_samples_per_pixel, renderState::view_plane_sample_sets)),
+		sampler_ptr(std::make_unique<multiJittering>(renderState::samples_per_set, renderState::view_plane_sample_sets)),
 		cl(.5, .5, .5),
-		ls(0.7)
+		ls(0.2)
 	{
 	}
 	bool in_shadow(const ray& r, const shadeRec& sr) override;

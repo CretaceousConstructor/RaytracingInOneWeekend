@@ -2,6 +2,7 @@
 
 TrekMath::vec3 pointLight::get_direction(shadeRec& sr)
 {
+    
     auto result = glm::normalize((this->location - sr.hitPoint));
 
     return result; 

@@ -65,7 +65,6 @@ bool areaLight::casts_shadows()
 void areaLight::set_object(std::shared_ptr<hittable> arg_object_ptr)
 {
     object_ptr = arg_object_ptr;
-
     material_ptr = arg_object_ptr->get_mat_ptr();
 
 }

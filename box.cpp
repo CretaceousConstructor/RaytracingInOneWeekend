@@ -1,5 +1,11 @@
 #include "box.h"
 
+box::box(TrekMath::point3 p0, TrekMath::point3 p1)
+	:
+	x0(p0.x), y0(p0.y), z0(p0.z), x1(p1.x), y1(p1.y), z1(p1.z)
+{
+}
+
 bool box::hit(const ray& r, double t_min, double t_max, shadeRec& sr) const
 {
 	double ox = r.origin().x;
@@ -79,40 +85,44 @@ bool box::hit(const ray& r, double t_min, double t_max, shadeRec& sr) const
 	}
 
 
-	if (tx_max > ty_max) {
+	if (tx_max < ty_max) {
 		t1 = tx_max;
-		face_in = (a >= 0.) ? 3 : 0;
+		face_out = (a >= 0.) ? 3 : 0;
 
 	}
 
 	else {
 		t1 = ty_max;
-		face_in = (b >= 0.) ? 4 : 1;
+		face_out = (b >= 0.) ? 4 : 1;
 
 	}
 
 
 	if (tz_max < t1) {
-
 		t1 = tz_max;
-		face_in = (c > 0.) ? 5 : 2;
+		face_out = (c >= 0.) ? 5 : 2;
 	}
+
 	double tmin;
+	TrekMath::normal tempNor;
 
 	if (t0 < t1 && t1 > kEpsilon) {
-		if (t0 > kEpsilon) {
+		if (t0 > kEpsilon) {	
 			tmin = t0;
-			sr.normal = get_face_nornal(face_in);
+			tempNor = get_face_nornal(face_in);
 		}
 		else {
 			tmin = t1;
-			sr.normal = get_face_nornal(face_out);
+			tempNor = get_face_nornal(face_out);
 		}
+
+		sr.set_front_face_and_normal(r, tempNor);
 		sr.hitPoint = r.point_at_parameter(tmin);
+		sr.t = tmin;
 		sr.local_hitPoint = sr.hitPoint;
 		sr.hit_an_object = true;
 		sr.mat_ptr = mat_ptr;
-		sr.front_face = (glm::dot(sr.normal,r.direction()) < 0.);
+
 		return true;
 	}
 	else {
@@ -132,11 +142,11 @@ TrekMath::normal box::get_face_nornal(const int face_int) const
 {
 	switch (face_int)
 	{
-		case 0: return (TrekMath::normal(-1.,  0.,  0.)); // -x
-		case 1: return (TrekMath::normal( 0., -1.,  0.)); // -y
-		case 2: return (TrekMath::normal( 0.,  0., -1.)); // -z
-		case 3: return (TrekMath::normal( 1., 0., 0.));	  // x
-		case 4: return (TrekMath::normal(0., 1., 0.));	  // y
-		case 5: return (TrekMath::normal(0., 0., 1.));	  // z
+	case 0: return (TrekMath::normal(-1., 0., 0.)); // -x
+	case 1: return (TrekMath::normal(0., -1., 0.)); // -y
+	case 2: return (TrekMath::normal(0., 0., -1.)); // -z
+	case 3: return (TrekMath::normal(1., 0., 0.));	  // x
+	case 4: return (TrekMath::normal(0., 1., 0.));	  // y
+	case 5: return (TrekMath::normal(0., 0., 1.));	  // z
 	}
 }

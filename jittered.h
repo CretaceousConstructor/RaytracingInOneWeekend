@@ -16,36 +16,7 @@ public:
 
 
 private:
-	virtual void generate_samples() override {
-
-		
-
-		for (int p = 0; p < num_sets; p++){
-			for (int j = 0; j < sqrt_of_numSamples; j++){
-				for (int k = 0; k < sqrt_of_numSamples; k++){
-					//¼ÙÉènÎª5
-					// range of k :[0 + 0, 0 + 1] / n ¡Ê [0,1/5]
-					// range of k :[1 + 0, 1 + 1] / n ¡Ê [1/5,2/5]
-
-
-					//  y
-					//  |
-					//  |
-					//  |------ x
-
-
-					TrekMath::point2 sp((k + TrekMath::random_double()) / sqrt_of_numSamples, (j + TrekMath::random_double()) / sqrt_of_numSamples);
-
-					unit_square_samples.push_back(sp);
-				}
-			}
-		}
-
-
-		map_square_samples_to_unit_disk();
-		map_square_samples_to_hemisphere();
-
-	}
+	virtual void generate_samples(const double exp = 1.0) override;
 
 
 

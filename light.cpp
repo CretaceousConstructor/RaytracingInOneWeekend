@@ -6,7 +6,6 @@ bool light::in_shadow(const ray& r, const shadeRec& sr)
 }
 
 double light::pdf(shadeRec& sr) const
-
 {
 	return 1.0;
 }

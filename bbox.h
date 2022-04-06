@@ -1,6 +1,9 @@
 #pragma once
+
+
 #include "hittable.h"
-class bbox : public hittable {
+class bbox : public hittable 
+{
 public:
 	bool hit(const ray& r, double t_min, double t_max, shadeRec& sr) const override;
 

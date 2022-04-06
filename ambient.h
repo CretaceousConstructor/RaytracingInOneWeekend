@@ -12,8 +12,6 @@ public:
 		ls(1.0),
 		cl(1.0, 1.0, 1.0)
 	{
-
-
 	}
 
 	 TrekMath::vec3 get_direction(shadeRec& sr) override;

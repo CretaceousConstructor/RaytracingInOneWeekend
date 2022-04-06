@@ -1,9 +1,9 @@
 #pragma once
-
-
 #include "hittable.h"
+
 class box : public hittable {
 public:
+	box(TrekMath::point3 p0, TrekMath::point3 p1);
 	bool hit(const ray& r, double t_min, double t_max, shadeRec& sr) const override;
 
 	std::string objectType() const override;

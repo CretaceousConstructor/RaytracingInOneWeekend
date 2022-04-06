@@ -13,7 +13,7 @@ color areaLighting::trace_ray(const ray& r) const
 	//hit_record rec;
 	shadeRec sr(*world_ptr);
 
-	if (world_ptr->hit(r, epsilon, infinity, sr)) {
+	if (world_ptr->hit(r, TrekMath::epsilon, TrekMath::infinity, sr)) {
 
 		return sr.mat_ptr->area_light_shade(sr);
 
@@ -22,7 +22,7 @@ color areaLighting::trace_ray(const ray& r) const
 
 
 		//if the ray Didn't hit anything
-		//using interpolation to generate background color or envirenment lighting
+		//using interpolation to generate background color or
 		//if the ray didn't hit anything,background color will be returned;
 		vec3 unit_direction = glm::normalize((r.direction()));
 		auto t = 0.5 * (unit_direction.y + 1.0);

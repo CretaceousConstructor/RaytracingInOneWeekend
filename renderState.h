@@ -1,25 +1,28 @@
 #pragma once
 
 
-class renderState {
+using namespace TrekMath;
 
 
-public:
 
-	static constexpr  double aspect_ratio = static_cast<double>(16) / static_cast<double>(9);
-	//static constexpr  int image_width = 384;
-	static constexpr  int image_width =400;
-	static constexpr  int image_height = static_cast<int>(image_width / aspect_ratio);
-
-	//static constexpr  int max_depth = 50;
+namespace renderState {
 
 
-	static constexpr int view_plane_samples_per_pixel = 64;
-	static constexpr int view_plane_sample_sets = 83;
+	 constexpr  double aspect_ratio = static_cast<double>(16) / static_cast<double>(9);
+
+	 constexpr  int image_width = 480;
+	 constexpr  int image_height = static_cast<int>(image_width / aspect_ratio);
+
+	 constexpr  int max_depth = 50;
 
 
-	static constexpr int lense_samples_per_pixel = 25;
-	static constexpr int lense_sample_sets = 83;
+	 constexpr int samples_per_set = 32;
+	 constexpr int view_plane_sample_sets = 83;
+	 constexpr int view_plane_samples_per_pixel = 100;
+
+
+	 constexpr int lense_sample_sets = 83;
+	 constexpr int lense_samples_per_pixel = view_plane_samples_per_pixel;
 
 
 };

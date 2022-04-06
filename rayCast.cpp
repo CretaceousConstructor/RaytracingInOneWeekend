@@ -10,7 +10,7 @@ rayCast::rayCast(const world* const world)
 
 
 
-color rayCast::trace_ray(const ray& r) const
+color rayCast::trace_ray(const ray& r)  const
 {
 	//hit_record rec;
 	shadeRec sr(*world_ptr);
@@ -26,7 +26,7 @@ color rayCast::trace_ray(const ray& r) const
 	}
 	else {
 
-		return TrekMath::color(1.,1.,1.);
+
 		//if the ray Didn't hit anything
 		//using interpolation to generate background color or envirenment lighting
 		//if the ray didn't hit anything,background color will be returned;
@@ -39,7 +39,7 @@ color rayCast::trace_ray(const ray& r) const
 	}
 }
 
-color rayCast::trace_ray(const ray& r, int argument_depth) const
+color rayCast::trace_ray(const ray& r,  int argument_depth) const
 {
 	return color();
 }

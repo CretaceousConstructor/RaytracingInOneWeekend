@@ -1,6 +1,5 @@
 #pragma once
 #include "hittable.h"
-#include "TrekMath.h"
 
 
 class plane : public hittable {
