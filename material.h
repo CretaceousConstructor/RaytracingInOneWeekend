@@ -3,7 +3,7 @@
 #include "colors.h"
 #include "shadeRec.h"
 #include "renderState.h"
-
+#include "texture.h"
 
 class material
 {

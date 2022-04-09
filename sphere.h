@@ -13,7 +13,6 @@ class sphere : public hittable
 	bool shadow_hit(const ray &r, double &t_shadow) const override;
 	bool bounding_box(double time0, double time1, AABB &output_box) const override;
 
-
   public:
 	TrekMath::point3 center;
 	double           radius;
@@ -21,5 +20,6 @@ class sphere : public hittable
 	virtual std::string objectType() const override;
 
   private:
+	static void             get_sphere_uv(const point3 &p,texcoor2d& texcor);
 	static constexpr double kEpsilon = 0.00001;
 };

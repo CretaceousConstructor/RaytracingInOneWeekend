@@ -31,8 +31,6 @@ TrekMath::color pathTrace::trace_ray(const ray& r, int argument_depth) const
 			return (1.0 - t) * TrekMath::color(1.0, 1.0, 1.0) + t * TrekMath::color(0.5, 0.7, 1.0);
 		}
 
-
-
 	}
 
 

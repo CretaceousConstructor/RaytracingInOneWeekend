@@ -8,8 +8,8 @@ double random_double(double min, double max)
 	//std::random_device rd;
 	//std::mt19937 e2(rd());
 	//static std::mt19937 generator;
-
 	//std::uniform_real_distribution<double> distribution(min, max); //// Returns a random real in [min,max)
+
 	std::uniform_real_distribution<double> distribution(min, max);        //TO DO optimizition
 	return distribution(generator);
 }
@@ -17,6 +17,12 @@ double random_double_inclusive(double min, double max)
 {
 	//std::uniform_real_distribution<double> distribution(min, max); //// Returns a random real in [min,max)
 	std::uniform_real_distribution<double> distribution(min, std::nextafter(max, DBL_MAX));        //TO DO optimizition
+	return distribution(generator);
+}
+int random_int(int min, int max)
+{
+	//Produces random integer values i , uniformly distributed on the closed interval [ a , b ] ,
+	std::uniform_int_distribution<> distribution(min, max);        //TO DO optimizition
 	return distribution(generator);
 }
 vec3 random(double min, double max)
@@ -36,18 +42,14 @@ vec3 reflect(const vec3 &v, const vec3 &n)
 vec3 refract(const vec3 &uv, const vec3 &n, double etai_over_etat)
 {
 	auto cos_theta      = glm::dot(-uv, n);
-	vec3 r_out_perp= etai_over_etat * (uv + cos_theta * n);
-	vec3 r_out_parallel= -sqrt(1.0 - glm::length2(r_out_perp)) * n;
+	vec3 r_out_perp     = etai_over_etat * (uv + cos_theta * n);
+	vec3 r_out_parallel = -sqrt(1.0 - glm::length2(r_out_perp)) * n;
 	return r_out_parallel + r_out_perp;
-
-
 }
 double degrees_to_radians(double degrees)
 {
 	return glm::radians(degrees);
 }
-
-
 
 bool near_zero(vec3 &e)
 {
@@ -55,8 +57,6 @@ bool near_zero(vec3 &e)
 	const auto s = 1e-8;
 	return (fabs(e[0]) < s) && (fabs(e[1]) < s) && (fabs(e[2]) < s);
 }
-
-
 
 double clamp(double x, double min, double max)
 {        //Returns min(max(x, minVal), maxVal)
@@ -71,13 +71,6 @@ vec3 random_unit_vector()
 	return vec3(r * glm::cos(a), r * glm::sin(a), z);
 }
 
-vec3 random_unit_vector_inclusive()
-{
-	auto a = random_double_inclusive(0, 2.0 * glm::pi<double>());
-	auto z = random_double_inclusive(-1, 1);
-	auto r = glm::sqrt(1 - z * z);
-	return vec3(r * glm::cos(a), r * glm::sin(a), z);
-}
 
 vec3 random_in_unit_sphere()
 {

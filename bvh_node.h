@@ -2,17 +2,19 @@
 
 #include "TrekMath.h"
 #include "hittable.h"
-#include "world.h"
+#include <memory>
+#include <iostream>
+//#include "world.h"
 using namespace TrekMath;
+using std::shared_ptr;
+using std::make_shared;
 
 class bvh_node : public hittable
 {
   public:
 	bvh_node() = default;
 
-	bvh_node(const world &list, double time0, double time1) :
-	    bvh_node(list.objects, 0, list.objects.size(), time0, time1)
-	{}
+	//bvh_node(const world &wor, double time0, double time1);
 	bvh_node(
 	    const std::vector<std::shared_ptr<hittable>> &src_objects,
 	    size_t start, size_t end, double time0, double time1);
@@ -23,7 +25,15 @@ class bvh_node : public hittable
 	std::string objectType() const override;
 
   private:
-	std::shared_ptr<hittable> left;
-	std::shared_ptr<hittable> right;
-	AABB                      box;
+	std::shared_ptr<hittable> left;         //×ó×ÓÊ÷
+	std::shared_ptr<hittable> right;        //ÓÒ×ÓÊ÷
+	AABB                      box;          //°üÎ§ºÐ
+
+	static bool box_compare(const shared_ptr<hittable> a, const shared_ptr<hittable> b, int axis);
+
+	static bool box_x_compare(const shared_ptr<hittable> a, const shared_ptr<hittable> b);
+
+	static bool box_y_compare(const shared_ptr<hittable> a, const shared_ptr<hittable> b);
+
+	static bool box_z_compare(const shared_ptr<hittable> a, const shared_ptr<hittable> b);
 };

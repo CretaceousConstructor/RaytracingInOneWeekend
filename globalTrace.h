@@ -1,6 +1,8 @@
 #pragma once
 #include "tracer.h"
-#include "renderer.h"
+
+
+
 class globalTrace : public tracer {
 public:
 	globalTrace(const world* const world);

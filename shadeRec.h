@@ -33,8 +33,11 @@ class shadeRec
 	bool                      front_face;
 	double                    t;
 	int                       depth;
+	TrekMath::texcoor2d                 texcor;
+
 	ray                       cast_ray;
-	TrekMath::vec3            dir;
+	//TrekMath::vec3            dir;
+
 
 	const world *wor;
 

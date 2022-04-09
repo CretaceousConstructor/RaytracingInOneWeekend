@@ -1,7 +1,6 @@
 #pragma once
 
 #include "tracer.h"
-#include "renderer.h"
 
 class pathTrace : public tracer {
 public:

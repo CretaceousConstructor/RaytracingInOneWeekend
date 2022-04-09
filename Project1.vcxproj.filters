@@ -43,6 +43,9 @@
     <Filter Include="Material\RTIW">
       <UniqueIdentifier>{fa3a9ec5-5390-4baa-bef3-991994682b58}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Texture">
+      <UniqueIdentifier>{9e8c90a7-a8c8-41bb-ba20-d2ba9c7f16b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -216,6 +219,24 @@
     <ClCompile Include="bvh_node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="solid_color.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="checkerTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="perlin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="noise_texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TrekMath.h">
@@ -265,9 +286,6 @@
     </ClInclude>
     <ClInclude Include="BRDF.h">
       <Filter>BRDF</Filter>
-    </ClInclude>
-    <ClInclude Include="shadeRec.h">
-      <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="ambient.h">
       <Filter>Light</Filter>
@@ -380,6 +398,27 @@
     <ClInclude Include="bvh_node.h">
       <Filter>Models</Filter>
     </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="solid_color.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="shadeRec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="checkerTexture.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="perlin.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="noise_texture.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="cuda_kernel.cu">
@@ -388,5 +427,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

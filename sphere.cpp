@@ -33,7 +33,7 @@ bool sphere::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 			sr.local_hitPoint = sr.hitPoint;        //
 			sr.cast_ray       = r;                  //
 			sr.t              = temp;
-
+			get_sphere_uv(outward_normal, sr.texcor);
 			//sr.depth
 			//sr.dir
 
@@ -103,17 +103,29 @@ bool sphere::shadow_hit(const ray &r, double &t_shadow) const
 bool sphere::bounding_box(double time0, double time1, AABB &output_box) const
 
 {
-
-
-    output_box = AABB(
-        center - vec3(radius, radius, radius),
-        center + vec3(radius, radius, radius));
-    return true;
-
-
+	output_box = AABB(
+	    center - vec3(radius, radius, radius),
+	    center + vec3(radius, radius, radius));
+	return true;
 }
 
 std::string sphere::objectType() const
 {
 	return std::string("sphere");
+}
+
+void sphere::get_sphere_uv(const point3 &p, texcoor2d &texcor)
+{
+	// p: a given point on the sphere of radius one, centered at the origin.
+	// u:  [0,1]
+	// v:  [0,1]
+	//     <1 0 0> yields <0.50 0.50>       <-1  0  0> yields <0.00 0.50>
+	//     <0 1 0> yields <0.50 1.00>       < 0 -1  0> yields <0.50 0.00>
+	//     <0 0 1> yields <0.25 0.50>       < 0  0 -1> yields <0.75 0.50>
+
+	auto theta = acos(-p.y);
+	auto phi   = atan2(-p.z, p.x) + glm::pi<double>();
+
+	texcor.u = phi / (2 * glm::pi<double>());
+	texcor.v = theta / glm::pi<double>();
 }
