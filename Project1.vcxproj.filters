@@ -225,7 +225,7 @@
     <ClCompile Include="solid_color.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="checkerTexture.cpp">
+    <ClCompile Include="checker_texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="scene.cpp">
@@ -235,6 +235,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="noise_texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="image_texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imageLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="diffuse_light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="renderingState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -407,7 +419,7 @@
     <ClInclude Include="shadeRec.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="checkerTexture.h">
+    <ClInclude Include="checker_texture.h">
       <Filter>Texture</Filter>
     </ClInclude>
     <ClInclude Include="scene.h">
@@ -418,6 +430,18 @@
     </ClInclude>
     <ClInclude Include="noise_texture.h">
       <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="imageLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="image_texture.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="diffuse_light.h">
+      <Filter>Material\RTIW</Filter>
+    </ClInclude>
+    <ClInclude Include="renderingState.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

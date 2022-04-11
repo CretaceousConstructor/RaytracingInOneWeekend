@@ -52,12 +52,13 @@ bvh_node::bvh_node(const std::vector<std::shared_ptr<hittable>> &src_objects, si
 bool bvh_node::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 {
 
-	//只有在碰到子节点（非bvh节点）的时候，shadeRec才会被填入
 	if (!box.hit(r, t_min, t_max, sr))
 	{
 		return false;
 	}
 
+
+	//只有在碰到子节点（非bvh节点）的时候，shadeRec才会被填入
 	bool hit_left  = left->hit(r, t_min, t_max, sr);
 	bool hit_right = right->hit(r, t_min, hit_left ? sr.t : t_max, sr);
 

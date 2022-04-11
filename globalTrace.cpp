@@ -17,7 +17,7 @@ color globalTrace::trace_ray(const ray& r) const
 
 TrekMath::color globalTrace::trace_ray(const ray& r, int argument_depth) const
 {
-	if (argument_depth > renderState::max_depth) {
+	if (argument_depth > DefaultRenderState::max_depth) {
 		return TrekMath::color(0., 0., 0.);
 	}
 	else {

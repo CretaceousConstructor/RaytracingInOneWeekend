@@ -6,7 +6,6 @@
 #include "material.h"
 #include "plane.h"
 #include "shadeRec.h"
-#include "sphere.h"
 
 #include <memory>
 #include <vector>
@@ -37,9 +36,14 @@ class world : public hittable
 	std::shared_ptr<bvh_node> root;        // bvh tree accelerating structure
 	
 	std::vector<shared_ptr<hittable>> acc_structures;        // vector of  pointers to acceleration sturctures
-	std::vector<shared_ptr<hittable>> objects;        // vector of  pointers to actual objects
+	std::vector<shared_ptr<hittable>> objects;				// vector of  pointers to actual objects
+
+
 
 	std::vector<shared_ptr<light>> lights;        // vector of  pointers to lights
 	std::shared_ptr<light>         ambient_light_ptr;
 	std::shared_ptr<tracer>        tracer_ptr;
+
+	bool acc_structure_generated = false;
+
 };

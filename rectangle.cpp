@@ -1,7 +1,7 @@
 #include "rectangle.h"
 
-rectangle::rectangle(TrekMath::vec3 arg_a, TrekMath::vec3 arg_b, TrekMath::point3 arg_p0, TrekMath::vec3 arg_normal) :
-    hittable(),
+rectangle::rectangle(TrekMath::vec3 arg_a, TrekMath::vec3 arg_b, TrekMath::point3 arg_p0, TrekMath::vec3 arg_normal,std::shared_ptr<material> m) :
+    hittable(m),
     a(arg_a),
     b(arg_b),
     p0(arg_p0),
@@ -31,13 +31,16 @@ bool rectangle::hit(const ray &r, double t_min, double t_max, shadeRec &sr) cons
 	}
 
 	sr.hitPoint = p;
-	//sr.set_front_face_and_normal(r,normal);
-	sr.normal         = normal;
+	sr.set_front_face_and_normal(r, normal);
 	sr.hit_an_object  = true;
 	sr.local_hitPoint = sr.hitPoint;        //
 	sr.mat_ptr        = mat_ptr;
 	sr.cast_ray       = r;        //
 	sr.t              = t;
+
+
+
+	set_rectangle_uv(sr.hitPoint, sr.texcor);
 	//sr.depth
 	//sr.dir
 
@@ -68,4 +71,18 @@ TrekMath::normal rectangle::get_normal(const TrekMath::point3 &p)
 void rectangle::set_sampler(std::unique_ptr<sampler> &&arg_sam)
 {
 	sampler_ptr = std::move(arg_sam);
+}
+
+void rectangle::set_rectangle_uv(const TrekMath::point3 &p, TrekMath::texcoor2d &texcor) const
+{
+	TrekMath::vec3 p0p = p - p0;
+	double         lenProjectedOna = glm::dot(p0p, a);
+	double         lenProjectedOnb = glm::dot(p0p, b);
+
+	texcor.u                       = lenProjectedOna / glm::length2(a);
+	texcor.v                       = lenProjectedOnb / glm::length2(b);
+
+
+
+
 }

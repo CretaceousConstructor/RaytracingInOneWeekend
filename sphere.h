@@ -20,6 +20,6 @@ class sphere : public hittable
 	virtual std::string objectType() const override;
 
   private:
-	static void             get_sphere_uv(const point3 &p,texcoor2d& texcor);
+	static void             set_sphere_uv(const point3 &p,texcoor2d& texcor);
 	static constexpr double kEpsilon = 0.00001;
 };

@@ -11,12 +11,12 @@
 class ambientOccluder : public light {
 
 public:
-	//renderState::view_plane_samples_per_pixel = 25;
+	//DefaultRenderState::view_plane_samples_per_pixel = 25;
 	//view_plane_sample_sets = 83;
 	ambientOccluder() 
 		:
 		min_amount(0.),
-		sampler_ptr(std::make_unique<multiJittering>(renderState::samples_per_set, renderState::view_plane_sample_sets)),
+		sampler_ptr(std::make_unique<multiJittering>(DefaultRenderState::samples_per_set, DefaultRenderState::view_plane_sample_sets)),
 		cl(.5, .5, .5),
 		ls(0.2)
 	{

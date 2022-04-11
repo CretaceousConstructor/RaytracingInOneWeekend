@@ -15,7 +15,7 @@ color pathTrace::trace_ray(const ray& r) const
 
 TrekMath::color pathTrace::trace_ray(const ray& r, int argument_depth) const
 {
-	if (argument_depth > renderState::max_depth) {
+	if (argument_depth > DefaultRenderState::max_depth) {
 		return TrekMath::color(0., 0., 0.);
 	}
 	else {
@@ -26,9 +26,15 @@ TrekMath::color pathTrace::trace_ray(const ray& r, int argument_depth) const
 			return sr.mat_ptr->path_shade(sr);
 		}
 		else {
-			vec3 unit_direction = glm::normalize((r.direction()));
-			auto t = 0.5 * (unit_direction.y + 1.0);
-			return (1.0 - t) * TrekMath::color(1.0, 1.0, 1.0) + t * TrekMath::color(0.5, 0.7, 1.0);
+
+			return background;
+			//vec3 unit_direct
+			// backgrounion = glm::normalize((r.direction()));
+			//auto t = 0.5 * (unit_direction.y + 1.0);
+			//return (1.0 - t) * TrekMath::color(1.0, 1.0, 1.0) + t * TrekMath::color(0.5, 0.7, 1.0);
+
+
+
 		}
 
 	}

@@ -4,7 +4,8 @@
 #include "hittable.h"
 #include <memory>
 #include <iostream>
-//#include "world.h"
+
+
 using namespace TrekMath;
 using std::shared_ptr;
 using std::make_shared;
@@ -36,4 +37,8 @@ class bvh_node : public hittable
 	static bool box_y_compare(const shared_ptr<hittable> a, const shared_ptr<hittable> b);
 
 	static bool box_z_compare(const shared_ptr<hittable> a, const shared_ptr<hittable> b);
+
+
+
+
 };

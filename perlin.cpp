@@ -3,6 +3,7 @@
 perlin::perlin()
 {
 	randreals.resize(point_count);
+	ranvecs.resize(point_count);
 	for (auto itr = randreals.begin(); itr != randreals.end(); itr++)
 	{
 		*itr = TrekMath::random_double();
@@ -10,14 +11,59 @@ perlin::perlin()
 	perm_x = perlin_generate_perm();
 	perm_y = perlin_generate_perm();
 	perm_z = perlin_generate_perm();
+
+	for (int i = 0; i < point_count; ++i)
+	{
+		ranvecs[i] = glm::normalize(TrekMath::random(-1, 1));
+	}
 }
 
 double perlin::noise(const TrekMath::vec3 &p) const
 {
-	int i = int(4 * p.x) & 255;
-	int j = int(4 * p.y) & 255;
-	int k = int(4 * p.z) & 255;
-	return ranfloat[perm_x[i] ^ perm_y[j] ^ perm_z[k]];
+	auto u = p.x - floor(p.x);
+	auto v = p.y - floor(p.y);
+	auto w = p.z - floor(p.z);
+	//Hermitian Smoothing
+	//u = u * u * (3 - 2 * u);
+	//v = v * v * (3 - 2 * v);
+	//w = w * w * (3 - 2 * w);
+
+	auto i = static_cast<int>(floor(p.x));
+	auto j = static_cast<int>(floor(p.y));
+	auto k = static_cast<int>(floor(p.z));
+
+	TrekMath::vec3 c[2][2][2];        //8个随机数。
+
+	for (int di = 0; di < 2; di++)
+	{
+		for (int dj = 0; dj < 2; dj++)
+		{
+			for (int dk = 0; dk < 2; dk++)
+			{
+				c[di][dj][dk] = ranvecs[perm_x[(i + di) & 255] ^
+				                        perm_y[(j + dj) & 255] ^
+				                        perm_z[(k + dk) & 255]];
+			}
+		}
+	}
+
+	return perlin_interp(c, u, v, w);
+}
+
+double perlin::turb(const TrekMath::point3 &p, int depth) const
+{
+	auto accum  = 0.0;
+	auto temp_p = p;
+	auto weight = 1.0;
+
+	for (int i = 0; i < depth; i++)
+	{
+		accum += weight * noise(temp_p);
+		weight *= 0.5;
+		temp_p *= 2;
+	}
+
+	return fabs(accum);
 }
 
 std::vector<int> perlin::perlin_generate_perm()
@@ -34,7 +80,7 @@ std::vector<int> perlin::perlin_generate_perm()
 	return p;
 }
 
-void perlin::permute(std::vector<int> p, int n)
+void perlin::permute(std::vector<int> &p, int n)
 {
 	for (int i = n - 1; i > 0; i--)
 	{
@@ -43,4 +89,35 @@ void perlin::permute(std::vector<int> p, int n)
 		p[i]       = p[target];
 		p[target]  = tmp;
 	}
+}
+//做3重插值。
+double perlin::trilinear_interp(double c[2][2][2], double u, double v, double w)
+{
+	auto accum = 0.0;
+	for (int i = 0; i < 2; i++)
+		for (int j = 0; j < 2; j++)
+			for (int k = 0; k < 2; k++)
+				accum += (i * u + (1 - i) * (1 - u)) *
+				         (j * v + (1 - j) * (1 - v)) *
+				         (k * w + (1 - k) * (1 - w)) * c[i][j][k];
+
+	return accum;
+}
+
+double perlin::perlin_interp(TrekMath::vec3 c[2][2][2], double u, double v, double w)
+{
+	auto uu    = u * u * (3 - 2 * u);
+	auto vv    = v * v * (3 - 2 * v);
+	auto ww    = w * w * (3 - 2 * w);
+	auto accum = 0.0;
+
+	for (int i = 0; i < 2; i++)
+		for (int j = 0; j < 2; j++)
+			for (int k = 0; k < 2; k++)
+			{
+				TrekMath::vec3 weight_v(u - i, v - j, w - k);
+				accum += (i * uu + (1 - i) * (1 - uu)) * (j * vv + (1 - j) * (1 - vv)) * (k * ww + (1 - k) * (1 - ww)) * dot(c[i][j][k], weight_v);
+			}
+
+	return accum;
 }

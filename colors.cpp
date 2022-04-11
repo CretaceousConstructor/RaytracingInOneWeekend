@@ -39,6 +39,8 @@ namespace colors
 
 
 	}
+
+
 	//tone mapping method
 	void clamp_individual_component(glm::f64& r, glm::f64& g, glm::f64& b) {
 		r = TrekMath::clamp(r, 0.0, 1.0);

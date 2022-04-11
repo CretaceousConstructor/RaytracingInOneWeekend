@@ -13,7 +13,11 @@ class tracer
 
 	virtual color trace_ray(const ray &r) const                     = 0;
 	virtual color trace_ray(const ray &r, int argument_depth) const = 0;
+	void set_back_ground_color(color c);
 
   protected:
 	const world *world_ptr;
+	color        background{0.70, 0.80, 1.00};
+
+
 };

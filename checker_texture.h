@@ -5,12 +5,12 @@
 
 using std::shared_ptr;
 using std::make_shared;
-class checkerTexture : public texture
+class checker_texture : public texture
 {
   public:
-	checkerTexture() = default;
-	checkerTexture(shared_ptr<texture> _even, shared_ptr<texture> _odd);
-	checkerTexture(color c1, color c2);
+	checker_texture() = default;
+	checker_texture(shared_ptr<texture> _even, shared_ptr<texture> _odd);
+	checker_texture(color c1, color c2);
 
 
 	//p is hit point

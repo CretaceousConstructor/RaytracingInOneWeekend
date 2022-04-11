@@ -8,7 +8,7 @@
 class BRDF {
 public:
 	BRDF():
-		sam(std::make_unique<multiJittering>(renderState::samples_per_set, renderState::view_plane_sample_sets))
+		sam(std::make_unique<multiJittering>(DefaultRenderState::samples_per_set, DefaultRenderState::view_plane_sample_sets))
 	{
 	}
 	BRDF(

@@ -33,7 +33,7 @@ bool sphere::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 			sr.local_hitPoint = sr.hitPoint;        //
 			sr.cast_ray       = r;                  //
 			sr.t              = temp;
-			get_sphere_uv(outward_normal, sr.texcor);
+		set_sphere_uv(outward_normal, sr.texcor);
 			//sr.depth
 			//sr.dir
 
@@ -49,9 +49,10 @@ bool sphere::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 			sr.hit_an_object  = true;
 			sr.mat_ptr        = mat_ptr;
 			sr.local_hitPoint = sr.hitPoint;        //
-
+			
 			sr.cast_ray = r;        //
 			sr.t        = temp;
+			set_sphere_uv(outward_normal, sr.texcor);
 			//sr.depth
 			//sr.dir
 			return true;
@@ -114,11 +115,11 @@ std::string sphere::objectType() const
 	return std::string("sphere");
 }
 
-void sphere::get_sphere_uv(const point3 &p, texcoor2d &texcor)
+void sphere::set_sphere_uv(const point3 &p, texcoor2d &texcor)
 {
 	// p: a given point on the sphere of radius one, centered at the origin.
-	// u:  [0,1]
-	// v:  [0,1]
+	// u:  returned value u.range:[0,1]
+	// v:  returned value v.range:[0,1]
 	//     <1 0 0> yields <0.50 0.50>       <-1  0  0> yields <0.00 0.50>
 	//     <0 1 0> yields <0.50 1.00>       < 0 -1  0> yields <0.50 0.00>
 	//     <0 0 1> yields <0.25 0.50>       < 0  0 -1> yields <0.75 0.50>

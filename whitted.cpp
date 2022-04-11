@@ -12,7 +12,7 @@ color whitted::trace_ray(const ray& r) const
 
 color whitted::trace_ray(const ray& r,int depth) const
 {
-    if (depth > renderState::max_depth) {
+    if (depth > DefaultRenderState::max_depth) {
 
         return color(0.,0.,0.);
     }

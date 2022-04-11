@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\include;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\stb;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\include;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\include;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\stb;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\include;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -122,7 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\include;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\stb;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\include;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -142,7 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\include;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\stb;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glfw-3.3.3.bin.WIN64\include;D:\ProgrammingTools\VisualStudioPack\VisualStudio\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -166,10 +166,11 @@
     <ClCompile Include="BTDF.cpp" />
     <ClCompile Include="bvh_node.cpp" />
     <ClCompile Include="camera.cpp" />
-    <ClCompile Include="checkerTexture.cpp" />
+    <ClCompile Include="checker_texture.cpp" />
     <ClCompile Include="colors.cpp" />
     <ClCompile Include="dielectric.cpp" />
     <ClCompile Include="diffuse.cpp" />
+    <ClCompile Include="diffuse_light.cpp" />
     <ClCompile Include="disk.cpp" />
     <ClCompile Include="emissive.cpp" />
     <ClCompile Include="emissive.h" />
@@ -180,6 +181,8 @@
     <ClCompile Include="glossySpecular.cpp" />
     <ClCompile Include="hammersley.cpp" />
     <ClCompile Include="hittable.cpp" />
+    <ClCompile Include="imageLoader.cpp" />
+    <ClCompile Include="image_texture.cpp" />
     <ClCompile Include="jittered.cpp" />
     <ClCompile Include="light.cpp" />
     <ClCompile Include="material.cpp" />
@@ -196,6 +199,7 @@
     <ClCompile Include="ray.cpp" />
     <ClCompile Include="rectangle.cpp" />
     <ClCompile Include="reflective.cpp" />
+    <ClCompile Include="renderingState.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="shadeRec.cpp" />
     <ClCompile Include="solid_color.cpp" />
@@ -229,11 +233,12 @@
     <ClInclude Include="BRDF.h" />
     <ClInclude Include="bvh_node.h" />
     <ClInclude Include="camera.h" />
-    <ClInclude Include="checkerTexture.h" />
+    <ClInclude Include="checker_texture.h" />
     <ClInclude Include="colors.h" />
     <ClInclude Include="cuda_kernel.cuh" />
     <ClInclude Include="dielectric.h" />
     <ClInclude Include="diffuse.h" />
+    <ClInclude Include="diffuse_light.h" />
     <ClInclude Include="disk.h" />
     <ClInclude Include="environmentLight.h" />
     <ClInclude Include="globalTrace.h" />
@@ -242,6 +247,8 @@
     <ClInclude Include="areaLight.h" />
     <ClInclude Include="BTDF.h" />
     <ClInclude Include="hittable.h" />
+    <ClInclude Include="imageLoader.h" />
+    <ClInclude Include="image_texture.h" />
     <ClInclude Include="metal.h" />
     <ClInclude Include="movingSphere.h" />
     <ClInclude Include="noise_texture.h" />
@@ -252,6 +259,7 @@
     <ClInclude Include="phong.h" />
     <ClInclude Include="rectangle.h" />
     <ClInclude Include="reflective.h" />
+    <ClInclude Include="renderingState.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="solid_color.h" />
     <ClInclude Include="texture.h" />

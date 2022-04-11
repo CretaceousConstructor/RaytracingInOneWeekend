@@ -12,20 +12,28 @@ bool world::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 	bool hit_anything   = false;
 	auto closest_so_far = t_max;
 
-	for (const auto &object : acc_structures)
+	auto* all_objects = &objects;
+	if (acc_structure_generated)
+	{
+		all_objects = &acc_structures;
+	}
+
+
+
+	for (const auto &object : (*all_objects))
 	{
 		if (object->hit(r, t_min, closest_so_far, temp_sr))
 		{
-			auto type_object = object->objectType();
+			/*	auto type_object = object->objectType();
 			if (type_object == std::string("triangle"))
 			{
 				hit_anything = true;
-			}
+			}*/
 
 			hit_anything   = true;
 			closest_so_far = temp_sr.t;        //temp_sr
 			sr             = temp_sr;
-			if (temp_sr.mat_ptr == nullptr)
+			if (nullptr == temp_sr.mat_ptr)
 			{
 				std::cout << "mat_ptr is null!";
 			}
@@ -72,7 +80,7 @@ void world::generating_acceleration_structure(double t0, double t1)
 {
 	root = std::make_shared<bvh_node>(objects, 0, objects.size(), t0, t1);
 	acc_structures.push_back(root);
-
+	acc_structure_generated = true;
 }
 
 void world::clear()
