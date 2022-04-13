@@ -5,7 +5,9 @@ scene::scene()
 	//two_balls_scene();
 	//two_perlin_spheres();
 	//sphere_texture_scene();
-	rectangle_scene();
+	//rectangle_scene();
+	cornell_box();
+	//cornell_box_testing();
 	//================================================================================================
 
 	std::shared_ptr<tracer> tracer_p = std::make_shared<pathTrace>(&w);
@@ -17,18 +19,16 @@ scene::scene()
 
 void scene::render(std::ofstream &result)
 {
-	cam->render_scence(w, result);
+	cam->render_scence(w, result, renstate);
 }
 
 void scene::random_balls_scene()
 {
-	renderingState renstate;
-
-
+	backgroundcolor = color(0.70, 0.80, 1.00);
 	cam =
 	    make_unique<thinLens>(
-	        0.1,        //aperture
-	        10.0,
+	        0.1,         //aperture
+	        10.0,        //view plane distance
 	        std::make_unique<hammersley>(renstate.view_plane_samples_per_pixel, renstate.view_plane_sample_sets),
 	        std::make_unique<multiJittering>(renstate.lense_samples_per_pixel, renstate.lense_sample_sets),
 
@@ -97,19 +97,7 @@ void scene::random_balls_scene()
 
 void scene::two_balls_scene()
 {
-	//pinHole(
-	//    std::unique_ptr<sampler> &&arg_viewPlaneSampler,
-
-	//    TrekMath::point3      lookfrom,
-	//    TrekMath::point3      lookat,
-	//    TrekMath::vec3        vup,
-	//    double                vfov,                // VERTICAL field-of-view in degrees
-	//    double                aspect_ratio,        //
-	//    std::optional<double> view_dist_optional = std::nullopt,
-	//    double _time0 = 0.,
-	//    double _time1 = 0.);
-
-	renderingState renstate;
+	backgroundcolor = color(0.70, 0.80, 1.00);
 	cam =
 	    std::make_unique<pinHole>(
 	        std::make_unique<hammersley>(renstate.view_plane_samples_per_pixel, renstate.view_plane_sample_sets),
@@ -118,7 +106,8 @@ void scene::two_balls_scene()
 	        TrekMath::vec3(0.0, 1.0, 0.0),        //vup,
 	        20.0,                                 //VERTICAL field-of-view in degrees
 	        renstate.aspect_ratio,
-	        10.0,        //view distance
+	        std::nullopt,        //view distance
+
 	        start_time,
 	        end_time);
 
@@ -132,9 +121,9 @@ void scene::two_balls_scene()
 
 void scene::two_perlin_spheres()
 {
-	renderingState renstate;
-	cam =
+	backgroundcolor = color(0.70, 0.80, 1.00);
 
+	cam =
 	    std::make_unique<pinHole>(
 	        std::make_unique<hammersley>(renstate.view_plane_samples_per_pixel, renstate.view_plane_sample_sets),
 	        TrekMath::point3(13., 2., 3.),        //lookfrom,
@@ -142,7 +131,8 @@ void scene::two_perlin_spheres()
 	        TrekMath::vec3(0.0, 1.0, 0.0),        //vup,
 	        20.0,                                 //VERTICAL field-of-view in degrees
 	        renstate.aspect_ratio,
-	        10.0,        //view distance
+	        std::nullopt,        //view distance
+
 	        start_time,
 	        end_time);
 
@@ -155,16 +145,18 @@ void scene::two_perlin_spheres()
 
 void scene::sphere_texture_scene()
 {
-	renderingState renstate;
+	backgroundcolor = color(0.70, 0.80, 1.00);
+
 	cam =
 	    std::make_unique<pinHole>(
 	        std::make_unique<hammersley>(renstate.view_plane_samples_per_pixel, renstate.view_plane_sample_sets),
-	        TrekMath::point3(13., 2., 3.),        //lookfrom,
+	        TrekMath::point3(0., 0., 12.),        //lookfrom,
 	        TrekMath::point3(0., 0., 0.),         //lookat,
 	        TrekMath::vec3(0.0, 1.0, 0.0),        //vup,
 	        20.0,                                 //VERTICAL field-of-view in degrees
 	        renstate.aspect_ratio,
-	        10.0,        //view distance
+	        std::nullopt,        //view distance
+
 	        start_time,
 	        end_time);
 
@@ -178,10 +170,8 @@ void scene::sphere_texture_scene()
 
 void scene::rectangle_scene()
 {
-	renderingState renstate;
-	backgroundcolor                                             = color(0.,0.,0.);
+	backgroundcolor                       = color(0., 0., 0.);
 	renstate.view_plane_samples_per_pixel = 400;
-
 
 	cam =
 	    std::make_unique<pinHole>(
@@ -191,7 +181,7 @@ void scene::rectangle_scene()
 	        TrekMath::vec3(0.0, 1.0, 0.0),        //vup,
 	        20.0,                                 //VERTICAL field-of-view in degrees
 	        renstate.aspect_ratio,
-	        10.0,        //view distance
+	        std::nullopt,        //view distance
 	        start_time,
 	        end_time);
 
@@ -201,19 +191,16 @@ void scene::rectangle_scene()
 
 	auto difflight = make_shared<diffuse_light>(color(4, 4, 4));
 	w.add_object(make_shared<rectangle>(vec3(2., 0., 0.), vec3(0., 2., 0.), point3(3.0, 1.0, -2.0), vec3(0., 0., 1.), difflight));
-
-
 }
 
 void scene::cornell_box()
 
 {
-	renderingState renstate;
-	renstate.aspect_ratio = 1.0;
-	renstate.view_plane_samples_per_pixel = 200;
+	renstate.aspect_ratio                 = 1.0;
 	renstate.image_width                  = 600;
-	renstate.image_height =  static_cast<int>(renstate.image_width / renstate.aspect_ratio);
-
+	renstate.view_plane_samples_per_pixel = 400;
+	renstate.image_height                 = static_cast<int>(renstate.image_width / renstate.aspect_ratio);
+	backgroundcolor                       = color(0., 0., 0.);
 
 	cam =
 	    std::make_unique<pinHole>(
@@ -223,7 +210,8 @@ void scene::cornell_box()
 	        TrekMath::vec3(0.0, 1.0, 0.0),              //vup,
 	        40.0,                                       //VERTICAL field-of-view in degrees
 	        renstate.aspect_ratio,
-	        10.0,        //view distance
+	        std::nullopt,        //view distance
+
 	        start_time,
 	        end_time);
 
@@ -232,18 +220,61 @@ void scene::cornell_box()
 	auto green = make_shared<diffuse>(color(.12, .45, .15));
 	auto light = make_shared<diffuse_light>(color(15, 15, 15));
 
+	w.add_object(make_shared<rectangle>(vec3(0., 0., -555.0), vec3(0., -555., 0.), point3(555., 555., 555.0), vec3(-1., 0., 0.), green));
+	w.add_object(make_shared<rectangle>(vec3(0., 0., -555.0), vec3(0., -555., 0.), point3(0., 555., 555.), vec3(1., 0., 0.), red));
 
-	w.add_object(make_shared<rectangle>(vec3(555., 0., 0.), vec3(0., 555., 0.), point3(0., 0., 555.0), vec3(0., 0., 1.), green));
+	w.add_object(make_shared<rectangle>(vec3(130., 0., 0.0), vec3(0., 0., -105.), point3(213., 554., 332.), vec3(0., -1., 0.), light));
 
+	w.add_object(make_shared<rectangle>(vec3(555., 0., 0.0), vec3(0., 0., -555.), point3(0., 0., 555.), vec3(0., 1., 0.), white));
 
-	//w.add_object(make_shared<rectangle>(0, 555, 0, 555, 555, green));
-	//w.add_object(make_shared<rectangle>(0, 555, 0, 555, 0, red));
-	//w.add_object(make_shared<rectangle>(213, 343, 227, 332, 554, light));
-	//w.add_object(make_shared<rectangle>(0, 555, 0, 555, 0, white));
-	//w.add_object(make_shared<rectangle>(0, 555, 0, 555, 555, white));
-	//w.add_object(make_shared<rectangle>(0, 555, 0, 555, 555, white));
+	w.add_object(make_shared<rectangle>(vec3(555., 0., 0.0), vec3(0., 0., -555.), point3(0., 555., 555.), vec3(0., -1., 0.), white));
 
+	w.add_object(make_shared<rectangle>(vec3(555., 0., 0.0), vec3(0., 555., 0.), point3(0., 0., 555.), vec3(0., 0., -1.), white));
 
+	w.add_object(make_shared<box>(point3(130, 0, 65), point3(295, 165, 230), white));
 
+	w.add_object(make_shared<box>(point3(265, 0, 295), point3(430, 330, 460), white));
+}
 
+void scene::testing_scene()
+{
+	renstate.aspect_ratio = 1.0;
+	renstate.image_width  = 400;
+	//TO DO : check if this number is not square of some integer;
+	renstate.view_plane_samples_per_pixel = 25;
+	renstate.image_height                 = static_cast<int>(renstate.image_width / renstate.aspect_ratio);
+	backgroundcolor                       = color{0.70, 0.80, 1.00};
+
+	cam =
+	    std::make_unique<pinHole>(
+	        std::make_unique<hammersley>(renstate.view_plane_samples_per_pixel, renstate.view_plane_sample_sets),
+	        TrekMath::point3(0., 2.5, -10.),        //lookfrom,
+	        TrekMath::point3(0., 2.5, 0.),          //lookat,
+	        TrekMath::vec3(0.0, 1.0, 0.0),          //vup,
+	        45.0,                                   //VERTICAL field-of-view in degrees
+	        renstate.aspect_ratio,
+	        std::nullopt,        //view distance
+	        start_time,
+	        end_time);
+
+	auto red   = make_shared<diffuse>(color(.65, .05, .05));
+	auto white = make_shared<diffuse>(color(.73, .73, .73));
+	auto green = make_shared<diffuse>(color(.12, .45, .15));
+	auto light = make_shared<diffuse_light>(color(15, 15, 15));
+
+	//w.add_object(make_shared<rectangle>(vec3(0., 0., -555.0), vec3(0., -555., 0.), point3(555., 555., 555.0), vec3(-1., 0., 0.), green));
+	//w.add_object(make_shared<rectangle>(vec3(0., 0., -555.0), vec3(0., -555., 0.), point3(0., 555., 555.), vec3(1., 0., 0.), red));
+
+	//w.add_object(make_shared<rectangle>(vec3(130., 0., 0.0), vec3(0., 0., -105.), point3(213., 554., 332.), vec3(0., -1., 0.), light));
+
+	//w.add_object(make_shared<rectangle>(vec3(555., 0., 0.0), vec3(0., 0., -555.), point3(0., 0., 555.), vec3(0., 1., 0.), white));
+
+	//w.add_object(make_shared<rectangle>(vec3(555., 0., 0.0), vec3(0., 0., -555.), point3(0., 555., 555.), vec3(0., -1., 0.), white));
+
+	//w.add_object(make_shared<rectangle>(vec3(555., 0., 0.0), vec3(0., 555., 0.), point3(0., 0., 555.), vec3(0., 0., -1.), white));
+
+	w.add_object(make_shared<box>(point3(-2., 0., -4.), point3(2., 4., 0), white));
+	w.add_object(make_shared<box>(point3(-2, 0, 1.), point3(2., 4, 5.0), green));
+
+	//w.add_object(make_shared<box>(point3(265, 0, 295), point3(430, 330, 460), white));
 }

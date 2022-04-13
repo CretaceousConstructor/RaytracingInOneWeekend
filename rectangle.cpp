@@ -37,10 +37,10 @@ bool rectangle::hit(const ray &r, double t_min, double t_max, shadeRec &sr) cons
 	sr.mat_ptr        = mat_ptr;
 	sr.cast_ray       = r;        //
 	sr.t              = t;
-
-
-
 	set_rectangle_uv(sr.hitPoint, sr.texcor);
+
+
+
 	//sr.depth
 	//sr.dir
 

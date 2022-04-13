@@ -10,32 +10,30 @@ bool world::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 	shadeRec temp_sr(*this);
 
 	bool hit_anything   = false;
-	auto closest_so_far = t_max;
+	auto closest_t_so_far = t_max;
 
-	auto* all_objects = &objects;
+	auto *all_objects = &objects;
 	if (acc_structure_generated)
 	{
 		all_objects = &acc_structures;
 	}
 
-
-
 	for (const auto &object : (*all_objects))
 	{
-		if (object->hit(r, t_min, closest_so_far, temp_sr))
+		if (object->hit(r, t_min, closest_t_so_far, temp_sr))
 		{
-			/*	auto type_object = object->objectType();
-			if (type_object == std::string("triangle"))
-			{
-				hit_anything = true;
-			}*/
+			//auto type_object = object->objectType();
 
-			hit_anything   = true;
-			closest_so_far = temp_sr.t;        //temp_sr
-			sr             = temp_sr;
+			hit_anything = true;
+			if (temp_sr.t < closest_t_so_far && temp_sr.t > t_min)
+			{
+				closest_t_so_far = temp_sr.t;        
+				sr             = temp_sr;
+			}
+
 			if (nullptr == temp_sr.mat_ptr)
 			{
-				std::cout << "mat_ptr is null!";
+				std::cout << "mat_ptr is null!" << std::endl;
 			}
 		}
 	}

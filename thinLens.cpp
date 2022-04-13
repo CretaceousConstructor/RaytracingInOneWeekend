@@ -11,20 +11,20 @@ thinLens::thinLens(double aperture, double focal_plane_dis, std::unique_ptr<samp
 {
 }
 
-void thinLens::render_scence(world &world, std::ofstream &result)
+void thinLens::render_scence(world &world, std::ofstream &result,const renderingState& rs)
 {
 #ifdef DEBUG
 	std::cout << "P3\n"
-	          << DefaultRenderState::image_width << ' ' << DefaultRenderState::image_height << "\n255\n";
+	          <<rs.image_width << ' ' <<rs.image_height << "\n255\n";
 #endif        // DEBUG
 
 	result << "P3\n"
-	       << DefaultRenderState::image_width << ' ' << DefaultRenderState::image_height << "\n255\n";
-	for (int j = DefaultRenderState::image_height - 1; j >= 0; --j)
+	       << rs.image_width << ' ' << rs.image_height << "\n255\n";
+	for (int j = rs.image_height - 1; j >= 0; --j)
 	{        //jmax  = 99   y axis goes up
 		std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
 		//std::cerr << "\rScanlines remaining: " << j << ' ' << std::endl;
-		for (int i = 0; i < DefaultRenderState::image_width; ++i)
+		for (int i = 0; i < rs.image_width; ++i)
 		{        //imax = 199
 			//
 			//  ny(j)
@@ -39,8 +39,8 @@ void thinLens::render_scence(world &world, std::ofstream &result)
 				//// random_double returns a random real in [0,1]. [i+0,i+1] 最大[image_width - 1, image_width]
 
 				auto p = samp_on_view_plane->sample_unit_square();
-				auto u = ((double) i + p.x) / ((double) DefaultRenderState::image_width);         //u是 占图片宽的比例
-				auto v = ((double) j + p.y) / ((double) DefaultRenderState::image_height);        //u是 占图片高的比例
+				auto u = ((double) i + p.x) / ((double) rs.image_width);         //u是 占图片宽的比例
+				auto v = ((double) j + p.y) / ((double) rs.image_height);        //u是 占图片高的比例
 
 				ray r = this->get_ray(u, v);
 

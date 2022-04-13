@@ -1,5 +1,6 @@
 #pragma once
 
+#include "box.h"
 #include "camera.h"
 #include "checker_texture.h"
 #include "dielectric.h"
@@ -33,14 +34,19 @@ class scene
 	world                   w;
 	std::unique_ptr<camera> cam;
 
-	void random_balls_scene();
-	void two_balls_scene();
-	void two_perlin_spheres();
-	void sphere_texture_scene();
-	void rectangle_scene();
-	void cornell_box();
+	void                    random_balls_scene();
+	void                    two_balls_scene();
+	void                    two_perlin_spheres();
+	void                    sphere_texture_scene();
+	void                    rectangle_scene();
+	void                    cornell_box();
+	void                    testing_scene();
+
+
 
 	color                   backgroundcolor{0., 0., 0.};
-	static constexpr double start_time      = 0.0;
-	static constexpr double end_time        = 1.0;
+	static constexpr double start_time = 0.0;
+	static constexpr double end_time   = 1.0;
+
+	renderingState renstate;
 };

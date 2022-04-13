@@ -19,7 +19,7 @@ class thinLens : public camera
 	    double           _time0 = 0.,
 	    double           _time1 = 0.);
 
-	void render_scence(world &world, std::ofstream &result) override;
+	void render_scence(world &world, std::ofstream &result,const renderingState& rs) override;
 
   private:
 	ray            get_ray(double s, double t) const override;

@@ -7,6 +7,7 @@
 #include "sampler.h"
 #include "tracer.h"
 #include "world.h"
+#include "renderingState.h"
 #include <fstream>
 #include <iostream>
 #include <memory>
@@ -25,7 +26,7 @@ class camera
 	    double _time0 = 0,
 	    double _time1 = 0);
 
-	virtual void render_scence(world &world, std::ofstream &result) = 0;
+	virtual void render_scence(world &world, std::ofstream &result,const renderingState& rs) = 0;
 	void         set_tracer_ptr(std::shared_ptr<tracer> arg_tracer);
 
 	virtual ~camera() = default;

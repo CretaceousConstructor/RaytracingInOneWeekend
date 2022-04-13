@@ -10,8 +10,13 @@ diffuse_light::diffuse_light(color c) :
 
 TrekMath::color diffuse_light::path_shade(shadeRec &sr)
 {
-	color emitted = emit->value(sr.texcor, sr.hitPoint);
+	//if (sr.front_face)
+	//{
+	//}
 
+	//return color(0.,0.,0.);
+
+	color emitted = emit->value(sr.texcor, sr.hitPoint);
 	return emitted;
 
 

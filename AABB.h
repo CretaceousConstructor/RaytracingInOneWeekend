@@ -1,6 +1,8 @@
 #pragma once
 #include "ray.h"
 #include "shadeRec.h"
+
+
 class AABB
 {
   public:
@@ -17,4 +19,7 @@ class AABB
   private:
 	TrekMath::point3 minimum;
 	TrekMath::point3 maximum;
+
+
+
 };

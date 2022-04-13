@@ -8,8 +8,8 @@
 class BRDF {
 public:
 	BRDF():
-		sam(std::make_unique<multiJittering>(DefaultRenderState::samples_per_set, DefaultRenderState::view_plane_sample_sets))
-	{
+		sam(std::make_unique<multiJittering>(1,2))
+	{ 
 	}
 	BRDF(
 		std::unique_ptr<sampler>&& arg_sam

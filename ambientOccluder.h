@@ -16,10 +16,10 @@ public:
 	ambientOccluder() 
 		:
 		min_amount(0.),
-		sampler_ptr(std::make_unique<multiJittering>(DefaultRenderState::samples_per_set, DefaultRenderState::view_plane_sample_sets)),
+		sampler_ptr(std::make_unique<multiJittering>(1, 2)),
 		cl(.5, .5, .5),
 		ls(0.2)
-	{
+	{ 
 	}
 	bool in_shadow(const ray& r, const shadeRec& sr) override;
 	TrekMath::color L(shadeRec& sr) override;
