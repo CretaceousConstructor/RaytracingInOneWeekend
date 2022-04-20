@@ -2,6 +2,9 @@
 
 #include "tracer.h"
 
+#include "world.h"
+
+
 class pathTrace : public tracer
 {
   public:

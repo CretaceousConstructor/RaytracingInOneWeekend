@@ -41,7 +41,7 @@ bool triangle::hit(const ray& r, double t_min, double t_max, shadeRec& sr) const
 	double e3 = a * p - b * valuer + d * s;
 	double t = e3 * inv_denom;
 
-	if (t < kEpsilon || t < t_min || t > t_max) {
+	if (abs(t) < kEpsilon || t < t_min || t > t_max) {
 
 		return (false);
 	}
@@ -55,7 +55,7 @@ bool triangle::hit(const ray& r, double t_min, double t_max, shadeRec& sr) const
 	return (true);
 }
 
-std::string triangle::objectType() const
+std::string triangle::object_type() const
 {
 	return std::string("triangle");
 }
@@ -94,7 +94,7 @@ bool triangle::shadow_hit(const ray& r, double& t_shadow) const
 	double e3 = a * p - b * valuer + d * s;
 	double t = e3 * inv_denom;
 
-	if (t < kEpsilon) {
+	if (abs(t) < kEpsilon) {
 		return false;
 	}
 	else {

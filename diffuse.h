@@ -2,6 +2,7 @@
 #include "material.h"
 #include "shadeRec.h"
 #include "tracer.h"
+#include "world.h"
 #include "solid_color.h"
 #include <memory>
 

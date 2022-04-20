@@ -64,11 +64,11 @@ bool bbox::hit(const ray& r, double t_min, double t_max, shadeRec& sr) const
 	t0 = std::max({ tx_min, ty_min, tz_min });
 	t1 = std::min({ tx_max, ty_max, tz_max });
 
-	return (t0 < t1 && t1 > kEpsilon); //needs to take t_min and t_max into account;
+	return (t0 < t1 && abs(t1) > kEpsilon); //needs to take t_min and t_max into account;
 
 }
 
-std::string bbox::objectType() const
+std::string bbox::object_type() const
 {
 	return std::string("bbox");
 }

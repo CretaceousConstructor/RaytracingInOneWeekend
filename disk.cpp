@@ -12,7 +12,7 @@ bool disk::hit(const ray& r, double t_min, double t_max, shadeRec& sr) const
 {
 	double t = glm::dot(center - r.origin(), nor) / glm::dot(r.direction(), nor);
 
-	if (t <= kEpsilon) {
+	if (abs(t) <= kEpsilon) {
 		return false;
 	}
 
@@ -36,7 +36,7 @@ bool disk::hit(const ray& r, double t_min, double t_max, shadeRec& sr) const
 
 }
 
-std::string disk::objectType() const
+std::string disk::object_type() const
 {
 	return std::string("disk");
 }

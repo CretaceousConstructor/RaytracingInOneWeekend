@@ -13,10 +13,12 @@ rectangle::rectangle(TrekMath::vec3 arg_a, TrekMath::vec3 arg_b, TrekMath::point
 bool rectangle::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 {
 	double t = glm::dot((p0 - r.origin()), normal) / glm::dot(r.direction(), normal);
-	if (t <= kEpsilon || t < t_min || t > t_max)
+	if (abs(t) <= kEpsilon || t < t_min || t > t_max)
 	{
 		return false;
 	}
+
+
 	TrekMath::point3 p     = r.point_at_parameter(t);
 	TrekMath::vec3   d     = p - p0;
 	double           dDota = glm::dot(d, a);
@@ -47,7 +49,7 @@ bool rectangle::hit(const ray &r, double t_min, double t_max, shadeRec &sr) cons
 	return true;
 }
 
-std::string rectangle::objectType() const
+std::string rectangle::object_type() const
 {
 	return std::string("rectangle");
 }

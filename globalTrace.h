@@ -1,6 +1,7 @@
 #pragma once
 #include "tracer.h"
 
+#include "world.h"
 
 
 class globalTrace : public tracer {

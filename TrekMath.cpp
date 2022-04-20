@@ -71,14 +71,15 @@ vec3 random_unit_vector()
 	return vec3(r * glm::cos(a), r * glm::sin(a), z);
 }
 
-
 vec3 random_in_unit_sphere()
 {
 	while (true)
 	{
 		auto p = random(-1., 1.);
 		if (glm::length2(p) >= 1.)
+		{
 			continue;
+		}
 		return p;
 	}
 }
@@ -279,5 +280,17 @@ bool isZero(double r)
 {
 	return glm::abs(r) < small_number;
 }
+
+point3 transform_point3(const glm::mat4x4 &m, const point3 &p)
+{
+	return point3(m * point4(p, 1.0));
+}
+
+vec3 transform_vec3(const glm::mat4x4 &m, const vec3 &p)
+{
+	return vec3(m * vec4(p, 0.0));
+}
+
+
 
 }        // namespace TrekMath

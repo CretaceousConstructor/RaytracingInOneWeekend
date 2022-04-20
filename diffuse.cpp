@@ -25,3 +25,8 @@ TrekMath::color diffuse::path_shade(shadeRec &sr)
 
 	return attenuation * (sr.wor->tracer_ptr->trace_ray(scattered, sr.depth + 1));
 }
+
+
+
+
+

@@ -108,27 +108,25 @@ bool box::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 		face_out = (c >= 0.) ? 5 : 2;
 	}
 
-
-
-
 	double           tmin;
 	TrekMath::normal tempNor;
 
-
-
-	if (t0 < t1 && t1 > kEpsilon)
+	if (t0 < t1 && abs(t1) > kEpsilon)
 	{
-		if (t0 > kEpsilon)
+		if ((abs(t0) > kEpsilon) && (t0 > t_min) && (t0 < t_max))
 		{
 			tmin    = t0;
 			tempNor = get_face_nornal(face_in);
 		}
-		else
+		else if ((t1 > t_min) && (t1 < t_max))
 		{
 			tmin    = t1;
 			tempNor = get_face_nornal(face_out);
 		}
-
+		else
+		{
+			return false;
+		}
 		sr.hitPoint = r.point_at_parameter(tmin);
 		sr.set_front_face_and_normal(r, tempNor);
 		sr.hit_an_object  = true;
@@ -140,19 +138,44 @@ bool box::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 
 		return true;
 	}
+	else if (t0 < t1 && abs(t0) > kEpsilon)
+	{
+		if ((t0 > t_min) && (t0 < t_max))
+		{
+			tmin    = t0;
+			tempNor = get_face_nornal(face_in);
+		}
+		else
+		{
+			return false;
+		}
+
+		sr.hitPoint = r.point_at_parameter(tmin);
+		sr.set_front_face_and_normal(r, tempNor);
+		sr.hit_an_object  = true;
+		sr.local_hitPoint = sr.hitPoint;
+
+		sr.cast_ray = r;
+		sr.mat_ptr  = mat_ptr;
+		sr.t        = tmin;
+	}
+
 	else
 	{
 		return false;
 	}
+
+
+
 }
 
 bool box::bounding_box(double time0, double time1, AABB &output_box) const
 {
-	output_box = AABB(minimum,maximum);
+	output_box = AABB(minimum, maximum);
 
 	return true;
 }
-std::string box::objectType() const
+std::string box::object_type() const
 {
 	return {"box"};
 }
@@ -174,6 +197,7 @@ TrekMath::normal box::get_face_nornal(const int face_int) const
 		case 5:
 			return (TrekMath::normal(0., 0., 1.));        // z
 		default:
+			std::cout << "mat_ptr is null!" << std::endl;
 			return (TrekMath::normal(-1., 0., 0.));        // -x
 	}
 }

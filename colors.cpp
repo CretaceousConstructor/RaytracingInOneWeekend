@@ -21,6 +21,10 @@ namespace colors
 		//clamp_individual_component(r, g, b); 
 		max_to_one(r, g, b);
 
+
+
+
+
 		//GAMMA CORRECTION
 		//raise to power of 1.f / gamma
 		const auto gamma = 2.2;

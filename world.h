@@ -1,17 +1,24 @@
 #pragma once
 
-#include "bvh_node.h"
-#include "hittable.h"
-#include "light.h"
-#include "material.h"
-#include "plane.h"
-#include "shadeRec.h"
+
+
 
 #include <memory>
 #include <vector>
-//#include "tracer.h"
-#include <iostream>
-class tracer;
+
+#include "world.fwd.h"
+#include "tracer.fwd.h"
+
+#include "bvh_node.h"
+#include "hittable.h"
+#include "light.h"
+#include "shadeRec.h"
+
+
+
+
+
+
 using std::make_shared;
 using std::shared_ptr;
 
@@ -29,7 +36,14 @@ class world : public hittable
   public:
 	bool        hit(const ray &r, double tmin, double tmax, shadeRec &sr) const override;
 	bool        bounding_box(double time0, double time1, AABB &output_box) const override;
-	std::string objectType() const override;
+
+
+
+
+
+	std::string object_type() const override;
+
+
 	void        generating_acceleration_structure(double t0,double t1);
 
   public:

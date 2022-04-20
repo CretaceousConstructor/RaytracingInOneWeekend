@@ -23,7 +23,7 @@ class bvh_node : public hittable
 	bool hit(const ray &r, double t_min, double t_max, shadeRec &sr) const override;
 	bool bounding_box(double time0, double time1, AABB &output_box) const override;
 
-	std::string objectType() const override;
+	std::string object_type() const override;
 
   private:
 	std::shared_ptr<hittable> left;         //×ó×ÓÊ÷

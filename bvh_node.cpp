@@ -71,7 +71,7 @@ bool bvh_node::bounding_box(double time0, double time1, AABB &output_box) const
 	return true;
 }
 
-std::string bvh_node::objectType() const
+std::string bvh_node::object_type() const
 {
 	return std::string("bvh node");
 }

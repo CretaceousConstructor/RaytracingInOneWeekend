@@ -1,9 +1,20 @@
 #pragma once
 
+
+
+
+
+#include "tracer.fwd.h"
+#include "world.fwd.h"
+
+
 #include "colors.h"
 #include "renderState.h"
 #include "shadeRec.h"
-#include "world.h"
+#include "material.h"
+//#include "hittable.h"
+
+
 class tracer
 {
   public:
@@ -17,6 +28,13 @@ class tracer
 
   protected:
 	const world *world_ptr;
+
+
+//std::shared_ptr<hittable> world_ptr;
+
+
+
+
 	color        background{0.70, 0.80, 1.00};
 
 

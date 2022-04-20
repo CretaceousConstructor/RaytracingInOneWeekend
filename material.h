@@ -1,7 +1,5 @@
 #pragma once
 
-#include "colors.h"
-#include "renderState.h"
 #include "shadeRec.h"
 #include "texture.h"
 
@@ -21,7 +19,7 @@ class material
 
 
 
-
+	
 	virtual TrekMath::color shade(shadeRec &sr);
 	virtual TrekMath::color whitted_shade(shadeRec &sr);
 	virtual TrekMath::color path_shade(shadeRec &sr);
