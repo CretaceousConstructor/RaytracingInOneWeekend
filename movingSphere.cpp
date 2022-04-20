@@ -17,7 +17,8 @@ bool movingSphere::hit(const ray &r, double t_min, double t_max, shadeRec &sr) c
 	{
 		double sqare_root_of_disc = sqrt(discriminant);
 		double temp               = (-half_b - sqare_root_of_disc) / a;        // temp is the parameter t,and is the one that's smaller between the two possible intersecting points,and it's closer
-		if (temp <= t_max && temp >= t_min)
+		if (temp <= t_max && temp >= t_min && (abs(temp) > kEpsilon))
+
 		{
 			sr.hitPoint = r.origin() + temp * r.direction();
 			//调整法线使得视线方向和法线总是呈现钝角
@@ -37,7 +38,7 @@ bool movingSphere::hit(const ray &r, double t_min, double t_max, shadeRec &sr) c
 		}
 
 		temp = (-half_b + sqare_root_of_disc) / a;
-		if (temp <= t_max && temp >= t_min)
+		if (temp <= t_max && temp >= t_min && (abs(temp) > kEpsilon))
 		{
 			sr.hitPoint                   = r.point_at_parameter(temp);
 			TrekMath::vec3 outward_normal = (sr.hitPoint - center(r.time())) / radius;        // intersecting normal vector,normalized
@@ -72,7 +73,7 @@ bool movingSphere::bounding_box(double _time0, double _time1, AABB &output_box) 
 	return true;
 };
 
-std::string movingSphere::objectType() const
+std::string movingSphere::object_type() const
 {
 	return std::string("moving sphere");
 }

@@ -41,7 +41,7 @@ bool torus::hit(const ray& r, double t_min, double t_max, shadeRec& sr) const
 	// the roots array is not sorted
 
 	for (int j = 0; j < num_real_roots; j++)
-		if (roots[j] > kEpsilon) {
+		if (abs(roots[j]) > kEpsilon) {
 			intersected = true;
 			if (roots[j] < t) {
 
@@ -67,7 +67,7 @@ bool torus::hit(const ray& r, double t_min, double t_max, shadeRec& sr) const
 	return (true);
 }
 
-std::string torus::objectType() const
+std::string torus::object_type() const
 {
 	return std::string("torus");
 }
@@ -118,7 +118,7 @@ bool torus::shadow_hit(const ray& r, double& t_shadow) const
 	// the roots array is not sorted
 
 	for (int j = 0; j < num_real_roots; j++)
-		if (roots[j] > kEpsilon) {
+		if (abs(roots[j]) > kEpsilon) {
 			intersected = true;
 			if (roots[j] < t) {
 
@@ -131,7 +131,7 @@ bool torus::shadow_hit(const ray& r, double& t_shadow) const
 		return (false);
 	}
 
-	if (t < kEpsilon) {
+	if (abs(t) < kEpsilon) {
 		return false;
 	}
 

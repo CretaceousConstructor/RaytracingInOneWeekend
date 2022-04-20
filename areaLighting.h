@@ -1,6 +1,8 @@
 #pragma once
 
 #include "tracer.h"
+#include "world.h"
+
 class areaLighting : public tracer {
 public:
 	areaLighting(const world* const world);

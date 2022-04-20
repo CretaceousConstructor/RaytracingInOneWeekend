@@ -21,7 +21,7 @@ bool sphere::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 	{
 		double sqare_root_of_disc = sqrt(discriminant);
 		double temp               = (-half_b - sqare_root_of_disc) / a;        // temp is the parameter t,and is the one that's smaller between the two possible intersecting points,and it's closer
-		if (temp <= t_max && temp >= t_min)
+		if (temp <= t_max && temp >= t_min && (abs(temp) > kEpsilon))
 		{
 			sr.hitPoint = r.origin() + temp * r.direction();
 			//调整法线使得视线方向和法线总是呈现钝角
@@ -33,7 +33,7 @@ bool sphere::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 			sr.local_hitPoint = sr.hitPoint;        //
 			sr.cast_ray       = r;                  //
 			sr.t              = temp;
-		set_sphere_uv(outward_normal, sr.texcor);
+			set_sphere_uv(outward_normal, sr.texcor);
 			//sr.depth
 			//sr.dir
 
@@ -41,7 +41,7 @@ bool sphere::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 		}
 
 		temp = (-half_b + sqare_root_of_disc) / a;
-		if (temp <= t_max && temp >= t_min)
+		if (temp <= t_max && temp >= t_min && (abs(temp) > kEpsilon))
 		{
 			sr.hitPoint                   = r.point_at_parameter(temp);
 			TrekMath::vec3 outward_normal = (sr.hitPoint - center) / radius;        // intersecting normal vector,normalized
@@ -49,7 +49,7 @@ bool sphere::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 			sr.hit_an_object  = true;
 			sr.mat_ptr        = mat_ptr;
 			sr.local_hitPoint = sr.hitPoint;        //
-			
+
 			sr.cast_ray = r;        //
 			sr.t        = temp;
 			set_sphere_uv(outward_normal, sr.texcor);
@@ -109,7 +109,7 @@ bool sphere::bounding_box(double time0, double time1, AABB &output_box) const
 	return true;
 }
 
-std::string sphere::objectType() const
+std::string sphere::object_type() const
 {
 	return std::string("sphere");
 }

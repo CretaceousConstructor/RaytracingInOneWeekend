@@ -1,6 +1,6 @@
 #pragma once
 #include "tracer.h"
-#include "renderState.h"
+#include "world.h"
 
 class whitted : public tracer {
 public:

@@ -15,10 +15,13 @@ public:
 
 
 
-	std::string objectType() const override;
+	std::string object_type() const override;
 private:
 	TrekMath::normal get_face_nornal(const int face_int) const;
-	static constexpr double kEpsilon = 0.00001;
+	//static constexpr double kEpsilon = 0.00001;
+
+	static constexpr double kEpsilon = TrekMath::epsilon;
+
 	double x0, x1, y0, y1, z0, z1;
 
 	TrekMath::point3 minimum;

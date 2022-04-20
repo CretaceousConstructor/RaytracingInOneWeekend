@@ -1,7 +1,6 @@
 #pragma once
 
 #include "AABB.h"
-
 #include <memory>
 #include <string>
 
@@ -13,9 +12,9 @@ class hittable
 	virtual ~hittable() = default;
 
   public:
+	virtual std::string object_type() const                                                ;
 	virtual bool        hit(const ray &r, double t_min, double t_max, shadeRec &sr) const = 0;
 	virtual bool        bounding_box(double time0, double time1, AABB &output_box) const;
-	virtual std::string objectType() const                                                = 0;
 
   public:
 	virtual bool             shadow_hit(const ray &r, double &t_shadow) const;
@@ -27,8 +26,13 @@ class hittable
 	std::shared_ptr<material> get_mat_ptr();
 	void                      set_shadows_object(bool arg_shadows);
 	void                      set_material(std::shared_ptr<material> arg_mat);
+
 	//virtual bbox get_bounding_box();
+
   protected:
 	bool                      shadows;
 	std::shared_ptr<material> mat_ptr = nullptr;
+
+
+
 };

@@ -23,13 +23,28 @@ bool world::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 		if (object->hit(r, t_min, closest_t_so_far, temp_sr))
 		{
 			//auto type_object = object->objectType();
+			//first time hit
+			if(hit_anything == false)
+			{
+				
+				hit_anything = true;
+				sr = temp_sr;
+			}
 
-			hit_anything = true;
-			if (temp_sr.t < closest_t_so_far && temp_sr.t > t_min)
+
+			//if (temp_sr.t < closest_t_so_far && temp_sr.t > t_min)
+			//{
+			//	closest_t_so_far = temp_sr.t;        
+			//	sr             = temp_sr;
+			//}
+
+
+			if (temp_sr.t < closest_t_so_far && temp_sr.t >= 0. )
 			{
 				closest_t_so_far = temp_sr.t;        
 				sr             = temp_sr;
 			}
+
 
 			if (nullptr == temp_sr.mat_ptr)
 			{
@@ -69,7 +84,7 @@ void world::set_tracer_ptr(std::shared_ptr<tracer> arg_tracer_ptr)
 	tracer_ptr = arg_tracer_ptr;
 }
 
-std::string world::objectType() const
+std::string world::object_type() const
 {
 	return std::string("world");
 }

@@ -44,7 +44,7 @@ bool plane::shadow_hit(const ray& r, double& t_shadow) const
 
 		double t = glm::dot((arbitraryPoint - r.eye()), normal) / (glm::dot(r.direction(), normal));
 
-		if (t > kEpsilon) {
+		if (abs(t) > kEpsilon) {
 
 			t_shadow = t;
 			return true;
@@ -58,7 +58,7 @@ bool plane::shadow_hit(const ray& r, double& t_shadow) const
 
 }
 
-std::string plane::objectType() const
+std::string plane::object_type() const
 {
 	return std::string("plane");
 }

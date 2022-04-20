@@ -46,6 +46,9 @@
     <Filter Include="Texture">
       <UniqueIdentifier>{9e8c90a7-a8c8-41bb-ba20-d2ba9c7f16b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Models\RTIW">
+      <UniqueIdentifier>{136e6c82-5aab-4f71-98ba-2c872bc91ad1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -249,16 +252,22 @@
     <ClCompile Include="renderingState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="instance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="constant_medium.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="isotropic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TrekMath.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sphere.h">
-      <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="hittable.h">
-      <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="cuda_kernel.cuh">
       <Filter>Cuda</Filter>
@@ -344,17 +353,11 @@
     <ClInclude Include="areaLighting.h">
       <Filter>Tracer</Filter>
     </ClInclude>
-    <ClInclude Include="rectangle.h">
-      <Filter>Models</Filter>
-    </ClInclude>
     <ClInclude Include="areaLight.h">
       <Filter>Light</Filter>
     </ClInclude>
     <ClInclude Include="environmentLight.h">
       <Filter>Light</Filter>
-    </ClInclude>
-    <ClInclude Include="box.h">
-      <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="bbox.h">
       <Filter>Models</Filter>
@@ -401,15 +404,6 @@
     <ClInclude Include="dielectric.h">
       <Filter>Material\RTIW</Filter>
     </ClInclude>
-    <ClInclude Include="movingSphere.h">
-      <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="AABB.h">
-      <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="bvh_node.h">
-      <Filter>Models</Filter>
-    </ClInclude>
     <ClInclude Include="texture.h">
       <Filter>Texture</Filter>
     </ClInclude>
@@ -443,14 +437,49 @@
     <ClInclude Include="renderingState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="isotropic.h">
+      <Filter>Material\RTIW</Filter>
+    </ClInclude>
+    <ClInclude Include="world.fwd.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="tracer.fwd.h">
+      <Filter>Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="AABB.h">
+      <Filter>Models\RTIW</Filter>
+    </ClInclude>
+    <ClInclude Include="box.h">
+      <Filter>Models\RTIW</Filter>
+    </ClInclude>
+    <ClInclude Include="bvh_node.h">
+      <Filter>Models\RTIW</Filter>
+    </ClInclude>
+    <ClInclude Include="constant_medium.h">
+      <Filter>Models\RTIW</Filter>
+    </ClInclude>
+    <ClInclude Include="movingSphere.h">
+      <Filter>Models\RTIW</Filter>
+    </ClInclude>
+    <ClInclude Include="hittable.h">
+      <Filter>Models\RTIW</Filter>
+    </ClInclude>
+    <ClInclude Include="instance.h">
+      <Filter>Models\RTIW</Filter>
+    </ClInclude>
+    <ClInclude Include="rectangle.h">
+      <Filter>Models\RTIW</Filter>
+    </ClInclude>
+    <ClInclude Include="sphere.h">
+      <Filter>Models\RTIW</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="cuda_kernel.cu">
       <Filter>Cuda</Filter>
     </CudaCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

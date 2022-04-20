@@ -16,12 +16,14 @@ class movingSphere : public hittable
 	bool shadow_hit(const ray &r, double &t_shadow) const override;
 	bool bounding_box(double time0, double time1, AABB &output_box) const override;
 
-	virtual std::string objectType() const override;
+	virtual std::string object_type() const override;
 
 	TrekMath::point3 center(double time) const;
 
   private:
-	TrekMath::point3          center0, center1;
+	TrekMath::point3        center0, center1;
+	static constexpr double kEpsilon = TrekMath::epsilon;
+
 	double                    time0, time1;
 	double                    radius;
 	std::shared_ptr<material> mat_ptr;

@@ -17,9 +17,10 @@ class sphere : public hittable
 	TrekMath::point3 center;
 	double           radius;
 
-	virtual std::string objectType() const override;
+	virtual std::string object_type() const override;
 
   private:
 	static void             set_sphere_uv(const point3 &p,texcoor2d& texcor);
-	static constexpr double kEpsilon = 0.00001;
+	static constexpr double kEpsilon = TrekMath::epsilon;
+
 };
