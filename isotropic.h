@@ -4,7 +4,7 @@
 #include "material.h"
 #include "shadeRec.h"
 #include "solid_color.h"
-#include "world.h"
+#include "MultipleObj.h"
 #include <memory>
 
 using std::make_shared;

@@ -1,12 +1,12 @@
 #pragma once
 
 #include "tracer.h"
-#include "world.h"
+#include "MultipleObj.h"
 class rayCast : public tracer {
 
 
 public:
-	rayCast(const world* const world);
+	rayCast(const MultipleObj* const world);
 	
 
 	color trace_ray(const ray& r) const override;

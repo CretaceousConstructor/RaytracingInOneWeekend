@@ -1,6 +1,6 @@
 #include "perfectTransmitter.h"
 
-color perfectTransmitter::sample_f(const shadeRec& sr, const vec3& wo, vec3& wt) const
+TrekMath::color perfectTransmitter::sample_f(const shadeRec&sr, const TrekMath::vec3&wo, TrekMath::vec3& wt) const
 {
     TrekMath::normal n (sr.normal);
     double cos_theta_i = glm::dot(n,wo);

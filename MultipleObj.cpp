@@ -1,15 +1,15 @@
-#include "world.h"
+#include "MultipleObj.h"
 
-world::world(shared_ptr<hittable> object)
+MultipleObj::MultipleObj(shared_ptr<hittable> object)
 {
 	add_object(object);
 }
 
-bool world::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
+bool MultipleObj::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 {
 	shadeRec temp_sr(*this);
 
-	bool hit_anything   = false;
+	bool hit_anything     = false;
 	auto closest_t_so_far = t_max;
 
 	auto *all_objects = &objects;
@@ -24,27 +24,17 @@ bool world::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 		{
 			//auto type_object = object->objectType();
 			//first time hit
-			if(hit_anything == false)
+			if (hit_anything == false)
 			{
-				
 				hit_anything = true;
-				sr = temp_sr;
+				sr           = temp_sr;
 			}
 
-
-			//if (temp_sr.t < closest_t_so_far && temp_sr.t > t_min)
-			//{
-			//	closest_t_so_far = temp_sr.t;        
-			//	sr             = temp_sr;
-			//}
-
-
-			if (temp_sr.t < closest_t_so_far && temp_sr.t >= 0. )
+			if (temp_sr.t < closest_t_so_far && temp_sr.t > t_min)
 			{
-				closest_t_so_far = temp_sr.t;        
-				sr             = temp_sr;
+				closest_t_so_far = temp_sr.t;
+				sr               = temp_sr;
 			}
-
 
 			if (nullptr == temp_sr.mat_ptr)
 			{
@@ -56,7 +46,7 @@ bool world::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 	return hit_anything;
 }
 
-bool world::bounding_box(double time0, double time1, AABB &output_box) const
+bool MultipleObj::bounding_box(double time0, double time1, AABB &output_box) const
 {
 	if (objects.empty())
 	{
@@ -79,33 +69,33 @@ bool world::bounding_box(double time0, double time1, AABB &output_box) const
 	return true;
 }
 
-void world::set_tracer_ptr(std::shared_ptr<tracer> arg_tracer_ptr)
+void MultipleObj::set_tracer_ptr(std::shared_ptr<tracer> arg_tracer_ptr)
 {
 	tracer_ptr = arg_tracer_ptr;
 }
 
-std::string world::object_type() const
+std::string MultipleObj::object_type() const
 {
-	return std::string("world");
+	return std::string("MultipleObj");
 }
 
-void world::generating_acceleration_structure(double t0, double t1)
+void MultipleObj::generating_acceleration_structure(double t0, double t1)
 {
 	root = std::make_shared<bvh_node>(objects, 0, objects.size(), t0, t1);
 	acc_structures.push_back(root);
 	acc_structure_generated = true;
 }
 
-void world::clear()
+void MultipleObj::clear()
 {
 	objects.clear();
 	lights.clear();
 }
-void world::add_object(shared_ptr<hittable> object)
+void MultipleObj::add_object(shared_ptr<hittable> object)
 {
 	objects.push_back(object);
 }
-void world::add_light(shared_ptr<light> light)
+void MultipleObj::add_light(shared_ptr<light> light)
 {
 	lights.push_back(light);
 }

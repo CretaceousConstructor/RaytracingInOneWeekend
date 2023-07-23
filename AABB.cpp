@@ -8,14 +8,13 @@ AABB::AABB(const TrekMath::point3 &a, const TrekMath::point3 &b) :
 
 bool AABB::hit(const ray &r_in, double t_min, double t_max, shadeRec &sr) const
 {
-	ray temp_ray = r_in;
 
 
 	for (int a = 0; a < 3; a++)
 	{
-		auto invD = 1.0f / temp_ray.direction()[a];
-		auto t0   = (min()[a] - temp_ray.origin()[a]) * invD;
-		auto t1   = (max()[a] - temp_ray.origin()[a]) * invD;
+		auto invD = 1.0f / r_in.direction()[a];
+		auto t0   = (min()[a] - r_in.origin()[a]) * invD;
+		auto t1   = (max()[a] - r_in.origin()[a]) * invD;
 		if (invD < 0.0f)
 		{
 			std::swap(t0, t1);

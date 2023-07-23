@@ -1,6 +1,6 @@
 #include "bvh_node.h"
 
-//bvh_node::bvh_node(const world &wor, double time0, double time1) :
+//bvh_node::bvh_node(const MultipleObj &wor, double time0, double time1) :
 //    bvh_node(wor.objects, 0, wor.objects.size(), time0, time1)
 //{}
 

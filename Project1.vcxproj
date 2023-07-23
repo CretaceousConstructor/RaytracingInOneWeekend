@@ -169,6 +169,7 @@
     <ClCompile Include="checker_texture.cpp" />
     <ClCompile Include="colors.cpp" />
     <ClCompile Include="constant_medium.cpp" />
+    <ClCompile Include="CosinePdfHemisphere.cpp" />
     <ClCompile Include="dielectric.cpp" />
     <ClCompile Include="diffuse.cpp" />
     <ClCompile Include="diffuse_light.cpp" />
@@ -182,6 +183,7 @@
     <ClCompile Include="glossySpecular.cpp" />
     <ClCompile Include="hammersley.cpp" />
     <ClCompile Include="hittable.cpp" />
+    <ClCompile Include="HittablePdf.cpp" />
     <ClCompile Include="imageLoader.cpp" />
     <ClCompile Include="image_texture.cpp" />
     <ClCompile Include="instance.cpp" />
@@ -190,11 +192,14 @@
     <ClCompile Include="light.cpp" />
     <ClCompile Include="material.cpp" />
     <ClCompile Include="metal.cpp" />
+    <ClCompile Include="MixturePdf.cpp" />
     <ClCompile Include="movingSphere.cpp" />
     <ClCompile Include="multiJittering.cpp" />
     <ClCompile Include="noise_texture.cpp" />
     <ClCompile Include="nrooks.cpp" />
-    <ClCompile Include="pathTrace.cpp" />
+    <ClCompile Include="ONB.cpp" />
+    <ClCompile Include="pathTracer.cpp" />
+    <ClCompile Include="Pdf.cpp" />
     <ClCompile Include="perfectSpecular.cpp" />
     <ClCompile Include="perfectTransmitter.cpp" />
     <ClCompile Include="perlin.cpp" />
@@ -213,7 +218,7 @@
     <ClCompile Include="transparent.cpp" />
     <ClCompile Include="triangle.cpp" />
     <ClCompile Include="whitted.cpp" />
-    <ClCompile Include="world.cpp" />
+    <ClCompile Include="MultipleObj.cpp" />
     <ClCompile Include="lambertian.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="matte.cpp" />
@@ -221,7 +226,7 @@
     <ClCompile Include="plane.cpp" />
     <ClCompile Include="pointLight.cpp" />
     <ClCompile Include="rayCast.cpp" />
-    <ClCompile Include="renderer.cpp" />
+    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="sampler.cpp" />
     <ClCompile Include="sphere.cpp" />
     <ClCompile Include="thinLens.cpp" />
@@ -240,6 +245,7 @@
     <ClInclude Include="checker_texture.h" />
     <ClInclude Include="colors.h" />
     <ClInclude Include="constant_medium.h" />
+    <ClInclude Include="CosinePdfHemisphere.h" />
     <ClInclude Include="cuda_kernel.cuh" />
     <ClInclude Include="dielectric.h" />
     <ClInclude Include="diffuse.h" />
@@ -252,14 +258,18 @@
     <ClInclude Include="areaLight.h" />
     <ClInclude Include="BTDF.h" />
     <ClInclude Include="hittable.h" />
+    <ClInclude Include="HittablePdf.h" />
     <ClInclude Include="imageLoader.h" />
     <ClInclude Include="image_texture.h" />
     <ClInclude Include="instance.h" />
     <ClInclude Include="isotropic.h" />
     <ClInclude Include="metal.h" />
+    <ClInclude Include="MixturePdf.h" />
     <ClInclude Include="movingSphere.h" />
     <ClInclude Include="noise_texture.h" />
-    <ClInclude Include="pathTrace.h" />
+    <ClInclude Include="ONB.h" />
+    <ClInclude Include="pathTracer.h" />
+    <ClInclude Include="Pdf.h" />
     <ClInclude Include="perfectSpecular.h" />
     <ClInclude Include="perfectTransmitter.h" />
     <ClInclude Include="perlin.h" />
@@ -277,7 +287,7 @@
     <ClInclude Include="triangle.h" />
     <ClInclude Include="whitted.h" />
     <ClInclude Include="world.fwd.h" />
-    <ClInclude Include="world.h" />
+    <ClInclude Include="MultipleObj.h" />
     <ClInclude Include="jittered.h" />
     <ClInclude Include="lambertian.h" />
     <ClInclude Include="light.h" />
@@ -290,7 +300,7 @@
     <ClInclude Include="pointLight.h" />
     <ClInclude Include="ray.h" />
     <ClInclude Include="rayCast.h" />
-    <ClInclude Include="renderer.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="renderState.h" />
     <ClInclude Include="sampler.h" />
     <ClInclude Include="shadeRec.h" />

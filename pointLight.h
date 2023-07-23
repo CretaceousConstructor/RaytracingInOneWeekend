@@ -1,7 +1,7 @@
 #pragma once
 #include "light.h"
 #include "shadeRec.h"
-#include "world.h"
+#include "MultipleObj.h"
 
 class pointLight : public light {
 public:

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "world.h"
+#include "MultipleObj.h"
 #include "phong.h"
 #include "perfectSpecular.h"
 #include "tracer.h"

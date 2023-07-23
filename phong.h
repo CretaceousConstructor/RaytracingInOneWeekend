@@ -2,7 +2,7 @@
 #include "material.h"
 #include "lambertian.h"
 #include "glossySpecular.h"
-#include "world.h"
+#include "MultipleObj.h"
 #include "tracer.h"
 class phong : public material {
 

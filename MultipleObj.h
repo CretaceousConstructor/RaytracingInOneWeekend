@@ -22,11 +22,11 @@
 using std::make_shared;
 using std::shared_ptr;
 
-class world : public hittable
+class MultipleObj : public hittable
 {
   public:
-	world() = default;
-	world(shared_ptr<hittable> object);
+	MultipleObj() = default;
+	MultipleObj(shared_ptr<hittable> object);
 
 	void add_object(shared_ptr<hittable> object);
 	void add_light(shared_ptr<light> light);
@@ -41,8 +41,7 @@ class world : public hittable
 
 
 
-	std::string object_type() const override;
-
+	[[nodiscard]] std::string object_type() const override;
 
 	void        generating_acceleration_structure(double t0,double t1);
 

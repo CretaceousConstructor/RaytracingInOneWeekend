@@ -3,7 +3,7 @@
 
 #include "material.h"
 #include "lambertian.h"
-#include "world.h"
+#include "MultipleObj.h"
 #include "shadeRec.h"
 #include "tracer.h"
 #include <memory>

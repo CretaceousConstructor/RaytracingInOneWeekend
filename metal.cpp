@@ -10,7 +10,7 @@ metal::metal(const color &a, double f) :
 TrekMath::color metal::path_shade(shadeRec &sr)
 {
 	vec3 reflected   = reflect(glm::normalize(sr.cast_ray.direction()), sr.normal);
-	auto scattered   = ray(sr.hitPoint, reflected + fuzz*random_in_unit_sphere(),sr.cast_ray.time());
+	auto scattered   = ray(sr.hitPoint, reflected + fuzz*random_within_unit_sphere(),sr.cast_ray.time());
 	auto attenuation = albedo;
 	
 

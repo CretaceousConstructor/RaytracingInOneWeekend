@@ -2,7 +2,7 @@
 
 
 
-globalTrace::globalTrace(const world* const world)
+globalTrace::globalTrace(const MultipleObj* const world)
 	:tracer(world)
 
 {

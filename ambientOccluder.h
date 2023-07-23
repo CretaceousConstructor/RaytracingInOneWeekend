@@ -3,7 +3,7 @@
 #include "TrekMath.h"
 #include "sampler.h"
 #include "colors.h"
-#include "world.h"
+#include "MultipleObj.h"
 #include "ray.h"
 #include "multiJittering.h"
 #include "renderState.h"

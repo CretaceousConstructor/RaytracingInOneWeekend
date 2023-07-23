@@ -1,19 +1,25 @@
-#include "renderer.h"
+#include "Renderer.h"
 
 
-renderer::renderer() :
+Renderer::Renderer() :
      result("Picture.ppm", std::ofstream::out)
 {
+
 }
 
-void renderer::startToRender()
+
+void Renderer::StartToRender()
 {
 	first_scene.render(result);
-	//cam->render_scence(w, result);
+	//cam->render_scence(world, result);
 }
 
-void renderer::cleanUp()
+
+Renderer::~Renderer()
 {
+
 	result.close();
 	system("OpenPic.bat");
+
+
 }

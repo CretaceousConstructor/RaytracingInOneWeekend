@@ -1,6 +1,6 @@
 #include "areaLighting.h"
 
-areaLighting::areaLighting(const world* const world)
+areaLighting::areaLighting(const MultipleObj* const world)
 	:tracer(world)
 
 {

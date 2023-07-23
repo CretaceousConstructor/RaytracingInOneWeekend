@@ -3,7 +3,7 @@
 #include "light.h"
 #include "hittable.h"
 #include "material.h"
-#include "world.h"
+#include "MultipleObj.h"
 #include "shadeRec.h"
 #include <memory>
 class areaLight : public light {

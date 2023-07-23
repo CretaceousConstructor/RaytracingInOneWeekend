@@ -111,7 +111,12 @@ bool box::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 	double           tmin;
 	TrekMath::normal tempNor;
 
-	if (t0 < t1 && abs(t1) > kEpsilon)
+	if (t0 >= t1)
+	{
+		return false;
+	}
+
+	if (abs(t1) > kEpsilon)
 	{
 		if ((abs(t0) > kEpsilon) && (t0 > t_min) && (t0 < t_max))
 		{
@@ -138,7 +143,7 @@ bool box::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 
 		return true;
 	}
-	else if (t0 < t1 && abs(t0) > kEpsilon)
+	else if (abs(t0) > kEpsilon)
 	{
 		if ((t0 > t_min) && (t0 < t_max))
 		{
@@ -159,11 +164,13 @@ bool box::hit(const ray &r, double t_min, double t_max, shadeRec &sr) const
 		sr.mat_ptr  = mat_ptr;
 		sr.t        = tmin;
 	}
-
 	else
 	{
 		return false;
 	}
+
+
+
 
 
 

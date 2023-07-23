@@ -34,7 +34,7 @@ TrekMath::color emissive::path_shade(shadeRec& sr)
 		return ls * ce;
 	}
 	else {
-		return TrekMath::color(0., 0., 0.);
+		return {0., 0., 0.};
 	}
 
 }

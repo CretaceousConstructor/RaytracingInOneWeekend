@@ -25,20 +25,11 @@
     <Filter Include="Sampler">
       <UniqueIdentifier>{0e661922-253a-4eb1-a090-2c7c1aef8530}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Camera">
-      <UniqueIdentifier>{63bf0213-9ce3-4d83-a205-fe82317898ae}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="BRDF">
-      <UniqueIdentifier>{8574d616-1f2a-44e9-bff5-9b3b06503701}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Light">
       <UniqueIdentifier>{3394f694-721d-48b8-90f2-e45fcd4d52ba}</UniqueIdentifier>
     </Filter>
     <Filter Include="Tracer">
       <UniqueIdentifier>{785db5be-38fb-4773-af42-fe2d18d10936}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="BTDF">
-      <UniqueIdentifier>{2650b679-a96b-4dc4-9415-8f0990169562}</UniqueIdentifier>
     </Filter>
     <Filter Include="Material\RTIW">
       <UniqueIdentifier>{fa3a9ec5-5390-4baa-bef3-991994682b58}</UniqueIdentifier>
@@ -49,12 +40,24 @@
     <Filter Include="Models\RTIW">
       <UniqueIdentifier>{136e6c82-5aab-4f71-98ba-2c872bc91ad1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Pdf">
+      <UniqueIdentifier>{47681387-139f-45bb-8d2d-c1aea31033e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\BRDF">
+      <UniqueIdentifier>{8574d616-1f2a-44e9-bff5-9b3b06503701}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\BTDF">
+      <UniqueIdentifier>{2650b679-a96b-4dc4-9415-8f0990169562}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Camera">
+      <UniqueIdentifier>{63bf0213-9ce3-4d83-a205-fe82317898ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="renderer.cpp">
+    <ClCompile Include="Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TrekMath.cpp">
@@ -93,7 +96,7 @@
     <ClCompile Include="matte.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="world.cpp">
+    <ClCompile Include="MultipleObj.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="glossySpecular.cpp">
@@ -180,7 +183,7 @@
     <ClCompile Include="glossyReflector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pathTrace.cpp">
+    <ClCompile Include="pathTracer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="globalTrace.cpp">
@@ -264,6 +267,21 @@
     <ClCompile Include="isotropic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ONB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pdf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CosinePdfHemisphere.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HittablePdf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MixturePdf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TrekMath.h">
@@ -281,7 +299,7 @@
     <ClInclude Include="jittered.h">
       <Filter>Sampler</Filter>
     </ClInclude>
-    <ClInclude Include="renderer.h">
+    <ClInclude Include="Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="nrooks.h">
@@ -293,20 +311,8 @@
     <ClInclude Include="hammersley.h">
       <Filter>Sampler</Filter>
     </ClInclude>
-    <ClInclude Include="camera.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="thinLens.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="pinHole.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
     <ClInclude Include="renderState.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BRDF.h">
-      <Filter>BRDF</Filter>
     </ClInclude>
     <ClInclude Include="ambient.h">
       <Filter>Light</Filter>
@@ -326,10 +332,7 @@
     <ClInclude Include="matte.h">
       <Filter>Material</Filter>
     </ClInclude>
-    <ClInclude Include="lambertian.h">
-      <Filter>BRDF</Filter>
-    </ClInclude>
-    <ClInclude Include="world.h">
+    <ClInclude Include="MultipleObj.h">
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="material.h">
@@ -337,9 +340,6 @@
     </ClInclude>
     <ClInclude Include="ray.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glossySpecular.h">
-      <Filter>BRDF</Filter>
     </ClInclude>
     <ClInclude Include="phong.h">
       <Filter>Material</Filter>
@@ -371,26 +371,17 @@
     <ClInclude Include="torus.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="perfectSpecular.h">
-      <Filter>BRDF</Filter>
-    </ClInclude>
     <ClInclude Include="whitted.h">
       <Filter>Tracer</Filter>
     </ClInclude>
     <ClInclude Include="reflective.h">
       <Filter>Material</Filter>
     </ClInclude>
-    <ClInclude Include="pathTrace.h">
+    <ClInclude Include="pathTracer.h">
       <Filter>Tracer</Filter>
     </ClInclude>
     <ClInclude Include="globalTrace.h">
       <Filter>Tracer</Filter>
-    </ClInclude>
-    <ClInclude Include="BTDF.h">
-      <Filter>BTDF</Filter>
-    </ClInclude>
-    <ClInclude Include="perfectTransmitter.h">
-      <Filter>BTDF</Filter>
     </ClInclude>
     <ClInclude Include="transparent.h">
       <Filter>Material</Filter>
@@ -475,6 +466,48 @@
     </ClInclude>
     <ClInclude Include="sphere.h">
       <Filter>Models\RTIW</Filter>
+    </ClInclude>
+    <ClInclude Include="ONB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="glossySpecular.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lambertian.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="perfectSpecular.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="perfectTransmitter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BRDF.h">
+      <Filter>Header Files\BRDF</Filter>
+    </ClInclude>
+    <ClInclude Include="BTDF.h">
+      <Filter>Header Files\BTDF</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>Header Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Pdf.h">
+      <Filter>Header Files\Pdf</Filter>
+    </ClInclude>
+    <ClInclude Include="HittablePdf.h">
+      <Filter>Header Files\Pdf</Filter>
+    </ClInclude>
+    <ClInclude Include="CosinePdfHemisphere.h">
+      <Filter>Header Files\Pdf</Filter>
+    </ClInclude>
+    <ClInclude Include="thinLens.h">
+      <Filter>Header Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="pinHole.h">
+      <Filter>Header Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="MixturePdf.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

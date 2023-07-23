@@ -1,6 +1,6 @@
 #include "tracer.h"
 
-tracer::tracer(const world *const world)
+tracer::tracer(const MultipleObj *const world)
 
     :
     world_ptr(world)

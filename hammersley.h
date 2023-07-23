@@ -15,17 +15,16 @@ public:
 	hammersley(int numSamples, int numSets)
 		:sampler(numSamples, numSets)
 	{
-		
 		generate_samples();
 		
-	};
+	}
 
 
 
 private:
 	virtual void generate_samples(const double exp = 1.0) override;
 
-	double phi(int j);
+	static double phi(int j);
 
 
 };

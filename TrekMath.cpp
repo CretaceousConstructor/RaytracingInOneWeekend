@@ -10,13 +10,13 @@ double random_double(double min, double max)
 	//static std::mt19937 generator;
 	//std::uniform_real_distribution<double> distribution(min, max); //// Returns a random real in [min,max)
 
-	std::uniform_real_distribution<double> distribution(min, max);        //TO DO optimizition
+	const std::uniform_real_distribution<double> distribution(min, max);        //TO DO optimizition
 	return distribution(generator);
 }
 double random_double_inclusive(double min, double max)
 {
 	//std::uniform_real_distribution<double> distribution(min, max); //// Returns a random real in [min,max)
-	std::uniform_real_distribution<double> distribution(min, std::nextafter(max, DBL_MAX));        //TO DO optimizition
+	const std::uniform_real_distribution<double> distribution(min, std::nextafter(max, DBL_MAX));        //TO DO optimizition
 	return distribution(generator);
 }
 int random_int(int min, int max)
@@ -41,9 +41,9 @@ vec3 reflect(const vec3 &v, const vec3 &n)
 }
 vec3 refract(const vec3 &uv, const vec3 &n, double etai_over_etat)
 {
-	auto cos_theta      = glm::dot(-uv, n);
-	vec3 r_out_perp     = etai_over_etat * (uv + cos_theta * n);
-	vec3 r_out_parallel = -sqrt(1.0 - glm::length2(r_out_perp)) * n;
+	const auto cos_theta      = glm::dot(-uv, n);
+	const vec3 r_out_perp     = etai_over_etat * (uv + cos_theta * n);
+	const vec3 r_out_parallel = -sqrt(1.0 - glm::length2(r_out_perp)) * n;
 	return r_out_parallel + r_out_perp;
 }
 double degrees_to_radians(double degrees)
@@ -51,10 +51,10 @@ double degrees_to_radians(double degrees)
 	return glm::radians(degrees);
 }
 
-bool near_zero(vec3 &e)
+bool near_zero(vec3 e)
 {
 	// Return true if the vector is close to zero in all dimensions.
-	const auto s = 1e-8;
+	constexpr auto s = 1e-8;
 	return (fabs(e[0]) < s) && (fabs(e[1]) < s) && (fabs(e[2]) < s);
 }
 
@@ -65,13 +65,13 @@ double clamp(double x, double min, double max)
 
 vec3 random_unit_vector()
 {
-	auto a = random_double(0, 2.0 * glm::pi<double>());
-	auto z = random_double(-1, 1);
-	auto r = glm::sqrt(1 - z * z);
-	return vec3(r * glm::cos(a), r * glm::sin(a), z);
+	const auto a = random_double(0, 2.0 * glm::pi<double>());
+	const auto z = random_double(-1, 1);
+	const auto r = glm::sqrt(1 - z * z);
+	return TrekMath::vec3(r * glm::cos(a), r * glm::sin(a), z);
 }
 
-vec3 random_in_unit_sphere()
+vec3 random_within_unit_sphere()
 {
 	while (true)
 	{
@@ -83,6 +83,9 @@ vec3 random_in_unit_sphere()
 		return p;
 	}
 }
+
+
+
 
 int solveQuadric(double c[3], double s[2])
 {
@@ -290,7 +293,5 @@ vec3 transform_vec3(const glm::mat4x4 &m, const vec3 &p)
 {
 	return vec3(m * vec4(p, 0.0));
 }
-
-
 
 }        // namespace TrekMath

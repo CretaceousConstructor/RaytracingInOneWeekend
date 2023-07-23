@@ -15,7 +15,7 @@ class bvh_node : public hittable
   public:
 	bvh_node() = default;
 
-	//bvh_node(const world &wor, double time0, double time1);
+	//bvh_node(const MultipleObj &wor, double time0, double time1);
 	bvh_node(
 	    const std::vector<std::shared_ptr<hittable>> &src_objects,
 	    size_t start, size_t end, double time0, double time1);

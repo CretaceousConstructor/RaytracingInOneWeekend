@@ -1,11 +1,11 @@
 #pragma once
 
 #include "tracer.h"
-#include "world.h"
+#include "MultipleObj.h"
 
 class areaLighting : public tracer {
 public:
-	areaLighting(const world* const world);
+	areaLighting(const MultipleObj* const world);
 
 
 	virtual color trace_ray(const ray& r ) const override;

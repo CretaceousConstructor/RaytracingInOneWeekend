@@ -1,6 +1,6 @@
 #include "rayCast.h"
 
-rayCast::rayCast(const world* const world)
+rayCast::rayCast(const MultipleObj* const world)
 	:tracer(world)
 
 {

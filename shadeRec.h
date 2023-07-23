@@ -2,13 +2,14 @@
 #include "ray.h"
 #include <memory>
 
-class world;
+class MultipleObj;
 class material;
 
 class shadeRec
 {
   public:
-	shadeRec(const world &w);
+	shadeRec() = default;
+	shadeRec(const MultipleObj &w);
 	shadeRec(const shadeRec &sr) = default;
 	shadeRec &operator=(const shadeRec &arg_sr) = default;
 	/*shadeRec& operator= (const shadeRec& arg_sr) {
@@ -25,21 +26,21 @@ class shadeRec
 		this->wor =                  arg_sr.wor;
 		return *this;
 	}*/
-	TrekMath::point3          hitPoint;
-	TrekMath::point3          local_hitPoint;        //used for texturing
-	TrekMath::normal          normal;
+	TrekMath::point3          hitPoint{};
+	TrekMath::point3          local_hitPoint{};        //used for texturing
+	TrekMath::normal          normal{};
 	std::shared_ptr<material> mat_ptr;
-	bool                      hit_an_object;
-	bool                      front_face;
-	double                    t;
-	int                       depth;
-	TrekMath::texcoor2d                 texcor;
+	bool                      hit_an_object{};
+	bool                      front_face{};
+	double                    t{};
+	int                       depth{};
+	TrekMath::texcoor2d       texcor{};
 
-	ray                       cast_ray;
+	//打到当前渲染点的光线。
+	ray cast_ray{};
 	//TrekMath::vec3            dir;
 
-
-	const world *wor;
+	const MultipleObj *wor;
 
 	//调整法线,使得视线方向和法线总是呈现钝角，并且判断ray的起点在物体内部还是外部。
 	void set_front_face_and_normal(const ray &r, const TrekMath::vec3 &outward_normal);

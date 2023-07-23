@@ -7,7 +7,7 @@ void shadeRec::set_front_face_and_normal(const ray &r, const TrekMath::vec3 &out
 	normal = front_face ? outward_normal : -outward_normal;
 }
 
-shadeRec::shadeRec(const world &w) :
+shadeRec::shadeRec(const MultipleObj &w) :
     hit_an_object(false),
     mat_ptr(nullptr),
     depth(0),

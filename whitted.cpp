@@ -1,6 +1,6 @@
 #include "whitted.h"
 
-whitted::whitted(const world* const world)
+whitted::whitted(const MultipleObj* const world)
     :tracer(world)
 {
 }

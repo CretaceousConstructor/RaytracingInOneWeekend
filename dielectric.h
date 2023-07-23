@@ -3,7 +3,7 @@
 #include "material.h"
 #include "shadeRec.h"
 #include "tracer.h"
-#include "world.h"
+#include "MultipleObj.h"
 #include <memory>
 
 class dielectric : public material
@@ -13,7 +13,7 @@ class dielectric : public material
 	    ir(index_of_refraction)
 	{}
 
-	virtual TrekMath::color path_shade(shadeRec &sr);
+	virtual TrekMath::color path_shade(shadeRec &sr) override;
 
   private:
 	static double reflectance(double cosine, double ref_idx);

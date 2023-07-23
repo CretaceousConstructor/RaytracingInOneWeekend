@@ -11,6 +11,8 @@ class diffuse_light : public material
 	diffuse_light(color c);
 
 	TrekMath::color path_shade(shadeRec &sr) override;
+	TrekMath::color path_shade(shadeRec &sr, const hittable &lights) override;
+	TrekMath::color path_shade(shadeRec &sr, const hittable &objects, std::shared_ptr<hittable> lights) override;
 
 
   public:

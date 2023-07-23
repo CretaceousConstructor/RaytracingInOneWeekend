@@ -4,7 +4,7 @@
 #include "sampler.h"
 #include "material.h"
 #include "shadeRec.h"
-#include "world.h"
+#include "MultipleObj.h"
 #include <memory>
 class environmentLight : public light {
 public:

@@ -1,9 +1,8 @@
 #pragma once
 
-using namespace TrekMath;
 
 namespace DefaultRenderState
 {
-constexpr int max_depth = 50;
+constexpr int max_depth = 250;
 
 };        // namespace DefaultRenderState

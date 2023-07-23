@@ -22,6 +22,17 @@ bool hittable::bounding_box(double time0, double time1, AABB &output_box) const
 	return false;
 }
 
+double hittable::PdfValue(const TrekMath::point3 &o, const TrekMath::vec3 &v) const
+{
+	return 0.0;
+}
+
+TrekMath::vec3 hittable::Random(const TrekMath::vec3 &o) const
+{
+	return {
+	    0.f, 0.f, 0.f};
+}
+
 bool hittable::shadow_hit(const ray &r, double &t_shadow) const
 {
 	return false;
@@ -29,12 +40,12 @@ bool hittable::shadow_hit(const ray &r, double &t_shadow) const
 
 TrekMath::point3 hittable::sample()
 {
-	return TrekMath::point3();
+	return {};
 }
 
 TrekMath::normal hittable::get_normal(const TrekMath::point3 &p)
 {
-	return TrekMath::normal();
+	return {};
 }
 
 double hittable::pdf(shadeRec &sr)

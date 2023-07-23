@@ -11,7 +11,7 @@ thinLens::thinLens(double aperture, double focal_plane_dis, std::unique_ptr<samp
 {
 }
 
-void thinLens::render_scence(world &world, std::ofstream &result,const renderingState& rs)
+void thinLens::render_scence(MultipleObj &world, std::ofstream &result,const renderingState& rs)
 {
 #ifdef DEBUG
 	std::cout << "P3\n"
@@ -36,11 +36,11 @@ void thinLens::render_scence(world &world, std::ofstream &result,const rendering
 			auto  samples_per_pix = samp_on_view_plane->get_num_of_samples_per_pix();
 			for (int s = 0; s < samples_per_pix; ++s)
 			{
-				//// random_double returns a random real in [0,1]. [i+0,i+1] ×î´ó[image_width - 1, image_width]
+				//// random_double returns a random real in [0,1]. [i+0,i+1]'s range is [image_width - 1, image_width]
 
 				auto p = samp_on_view_plane->sample_unit_square();
-				auto u = ((double) i + p.x) / ((double) rs.image_width);         //uÊÇ Õ¼Í¼Æ¬¿íµÄ±ÈÀý
-				auto v = ((double) j + p.y) / ((double) rs.image_height);        //uÊÇ Õ¼Í¼Æ¬¸ßµÄ±ÈÀý
+				auto u = ((double) i + p.x) / ((double) rs.image_width);         //uï¿½ï¿½ Õ¼Í¼Æ¬ï¿½ï¿½Ä±ï¿½ï¿½ï¿½
+				auto v = ((double) j + p.y) / ((double) rs.image_height);        //uï¿½ï¿½ Õ¼Í¼Æ¬ï¿½ßµÄ±ï¿½ï¿½ï¿½
 
 				ray r = this->get_ray(u, v);
 

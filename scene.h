@@ -1,8 +1,10 @@
 #pragma once
 
+#include "MultipleObj.h"
 #include "box.h"
 #include "camera.h"
 #include "checker_texture.h"
+#include "constant_medium.h"
 #include "dielectric.h"
 #include "diffuse.h"
 #include "diffuse_light.h"
@@ -13,14 +15,12 @@
 #include "movingSphere.h"
 #include "multiJittering.h"
 #include "noise_texture.h"
-#include "pathTrace.h"
+#include "pathTracer.h"
 #include "pinHole.h"
 #include "rectangle.h"
 #include "renderingState.h"
 #include "sphere.h"
 #include "thinLens.h"
-#include "world.h"
-#include "constant_medium.h"
 #include <memory>
 
 using std::make_shared;
@@ -33,24 +33,24 @@ class scene
 	void render(std::ofstream &result);
 
   private:
-	world                   w;
-	std::unique_ptr<camera> cam;
+	MultipleObj world;
+	std::shared_ptr<hittable> lights;
 
-	void random_balls_scene();
-	void two_balls_scene();
-	void two_perlin_spheres();
-	void sphere_texture_scene();
-	void rectangle_scene();
-	void cornell_box();
-	void testing_scene();
-	void cornell_smoke();
+	std::unique_ptr<camera> cam;
+	void                    random_balls_scene();
+	void                    two_balls_scene();
+	void                    two_perlin_spheres();
+	void                    sphere_texture_scene();
+	void                    rectangle_scene();
+	void                    cornell_box();
+	void                    testing_scene();
+	void                    cornell_smoke();
 	void                    final_scene();
-	color                   backgroundcolor{0., 0., 0.};
+
+	color backgroundcolor{0., 0., 0.};
+
 	static constexpr double start_time = 0.0;
 	static constexpr double end_time   = 1.0;
 
 	renderingState renstate;
-
-
-
 };

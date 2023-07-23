@@ -2,7 +2,7 @@
 #include "material.h"
 #include "phong.h"
 #include "tracer.h"
-#include "world.h"
+#include "MultipleObj.h"
 class glossyReflector : public phong
 {
   public:

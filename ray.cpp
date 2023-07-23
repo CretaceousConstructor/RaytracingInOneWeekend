@@ -27,17 +27,17 @@ double ray::time() const
 	return tm;
 }
 
- TrekMath::point3 ray::eye() const
+TrekMath::point3 ray::eye() const
 {
 	return A;
 }
 
- TrekMath::point3 ray::origin() const
+TrekMath::point3 ray::origin() const
 {
 	return A;
 }
 
- TrekMath::vec3 ray::direction() const
+TrekMath::vec3 ray::direction() const
 {
 	return B;
 }
